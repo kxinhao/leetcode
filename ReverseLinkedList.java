@@ -11,20 +11,20 @@
 class Solution {
     
     //recursive method
-    public ListNode reverseList(ListNode head) {
-        if(head==null || head.next==null) return head; //checks if last node and returns
+    public ListNode reverseList(ListNode node) {
+        if(node=null || node.next==null) return node; //checks if last node and returns
         ListNode prev = null;
-        ListNode curr = reverseList(head.next); //travels down to tail node through recursion; head is 2nd last node here
-        head.next.next = head; //points last node to 2nd last by assigning last node's next'
-        head.next = prev; //break link from head to head.next as the reverse link has been established
+        ListNode curr = reverseList(node.next); //travels down to tail node through recursion; node is 2nd last node here
+        node.next.next = node; //points last node to 2nd last by assigning last node's next'
+        node.next = prev; //break link from node to node.next as the reverse link has been established
         return curr;
     }
 
     //iterative method
     /*
-    public ListNode reverseList(ListNode head) {
+    public ListNode reverseList(ListNode node) {
         ListNode prev = null;
-        ListNode curr = head;
+        ListNode curr = node;
 
         while(curr!=null) {
             ListNode next = curr.next;
