@@ -1,6 +1,6 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        java.util.Map<Integer,Integer> hashtable = new java.util.HashMap<>();
+        Map<Integer,Integer> hashtable = new HashMap<>();
         for(int i = 0; i<nums.length; i++) {
             int complement = target - nums[i];
             if(hashtable.containsKey(complement)){ //check if complement of nums[i] in hashtable
