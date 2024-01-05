@@ -1,11 +1,12 @@
 class LRUCache {
     
     class Node {
-        int value;
+        int value, key;
         Node next;
         Node prev;
 
-        public Node(int inputValue) {
+        public Node(int inputKey, int inputValue) {
+            this.key = inputKey;
             this.value = inputValue;
         }
     }
@@ -16,14 +17,14 @@ class LRUCache {
     private Node tail;
 
     private Map<Integer, Node> lookup;
-    private Map<Node, Integer> reverseLookup;
+    //private Map<Node, Integer> reverseLookup;
 
     public LRUCache(int capacity) {
         this.length = 0;
         this.capacity = capacity;
         this.head = this.tail = null;
         this.lookup = new HashMap<Integer, Node>();
-        this.reverseLookup = new HashMap<Node, Integer>();
+        //this.reverseLookup = new HashMap<Node, Integer>();
     }
     
     public int get(int key) {
@@ -39,13 +40,13 @@ class LRUCache {
     public void put(int key, int value) {
        Node node = this.lookup.get(key);
        if(null == node) {
-           node = new Node(value);
+           node = new Node(key,value);
            this.length++;
            this.prepend(node);
            this.trimCache();
 
            this.lookup.put(key, node);
-           this.reverseLookup.put(node, key);
+           //this.reverseLookup.put(node, key);
        } else {
            this.detach(node);
            this.prepend(node);
@@ -87,9 +88,9 @@ class LRUCache {
         }
         Node t = this.tail;
         this.detach(t);
-        int key = this.reverseLookup.get(t);
+        //int key = this.reverseLookup.get(t);
         this.lookup.remove(key);
-        this.reverseLookup.remove(t);
+        //this.reverseLookup.remove(t);
         this.length--;
     }
 }
