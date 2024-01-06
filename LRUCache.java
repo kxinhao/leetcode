@@ -1,3 +1,5 @@
+// 2 ways to impl, Node class with both key and value, 
+// or reverseLookup to retrieve key
 class LRUCache {
     
     class Node {
@@ -27,6 +29,9 @@ class LRUCache {
         //this.reverseLookup = new HashMap<Node, Integer>();
     }
     
+    // retrieve node from hashmap, 
+    // if no node found, return -1
+    // if node found, move node to back of map
     public int get(int key) {
        Node node = this.lookup.get(key);
        if(null == node) {
@@ -37,6 +42,11 @@ class LRUCache {
        return node.value; 
     }
     
+    // get node from hashmap,
+    // if no node found, create new node, add length, prepend node
+    // then check if length exceeds size and trim
+    // else
+    // move found node to end and replace value
     public void put(int key, int value) {
        Node node = this.lookup.get(key);
        if(null == node) {
@@ -54,6 +64,7 @@ class LRUCache {
        } 
     }
 
+    // remove linkages of node at end of DLL
     private void detach(Node node) {
         if(node.prev != null) {
             node.prev.next = node.next;
@@ -72,6 +83,7 @@ class LRUCache {
         node.prev = null;
     }
 
+    // add node to front of doubly linked list
     private void prepend(Node node) {
         if(null == this.head) {
             this.head = this.tail = node;
@@ -82,6 +94,8 @@ class LRUCache {
         this.head = node;
     }
 
+    // check if length more than cap, if so remove least
+    // used node from end of DLL
     private void trimCache() {
         if(this.length <= this.capacity) {
             return;
