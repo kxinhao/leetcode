@@ -1,7 +1,7 @@
-// 2 ways to impl, Node class with both key and value, 
+// 2 ways to impl, Node class with both key and value,
 // or reverseLookup to retrieve key
 class LRUCache {
-    
+
     class Node {
         int value, key;
         Node next;
@@ -28,20 +28,20 @@ class LRUCache {
         this.lookup = new HashMap<Integer, Node>();
         //this.reverseLookup = new HashMap<Node, Integer>();
     }
-    
-    // retrieve node from hashmap, 
+
+    // retrieve node from hashmap,
     // if no node found, return -1
     // if node found, move node to back of map
     public int get(int key) {
        Node node = this.lookup.get(key);
        if(null == node) {
            return -1;
-       } 
+       }
        this.detach(node);
        this.prepend(node);
-       return node.value; 
+       return node.value;
     }
-    
+
     // get node from hashmap,
     // if no node found, create new node, add length, prepend node
     // then check if length exceeds size and trim
@@ -61,7 +61,7 @@ class LRUCache {
            this.detach(node);
            this.prepend(node);
            node.value = value;
-       } 
+       }
     }
 
     // remove linkages of node at end of DLL
@@ -103,7 +103,7 @@ class LRUCache {
         Node t = this.tail;
         this.detach(t);
         //int key = this.reverseLookup.get(t);
-        this.lookup.remove(key);
+        this.lookup.remove(t.key);
         //this.reverseLookup.remove(t);
         this.length--;
     }
