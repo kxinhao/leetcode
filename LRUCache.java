@@ -1,3 +1,4 @@
+// ** IMPL COUNT: 3
 // 2 ways to impl, Node class with both key and value,
 // or reverseLookup to retrieve key
 class LRUCache {
