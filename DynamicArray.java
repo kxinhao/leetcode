@@ -32,7 +32,7 @@ class DynamicArray {
         for(int i = 0; i < this.length; i++) {
             newarr[i] = arr[i];
         }
-        arr = newarr;
+        this.arr = newarr;
         return v;
     }
 
