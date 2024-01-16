@@ -30,7 +30,7 @@ class DynamicArray {
         this.length--;
         int[] newarr = new int[this.capacity];
         for(int i = 0; i < this.length; i++) {
-            newarr[i] = arr[i];
+            newarr[i] = this.arr[i];
         }
         this.arr = newarr;
         return v;
@@ -40,9 +40,9 @@ class DynamicArray {
         this.capacity *= 2;
         int[] newarr = new int[this.capacity];
         for(int i = 0; i < arr.length; i++) {
-            newarr[i] = arr[i];
+            newarr[i] = this.arr[i];
         }
-        arr = newarr;
+        this.arr = newarr;
     }
 
     public int getsize() {
