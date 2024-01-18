@@ -1,4 +1,4 @@
-// ** IMPL COUNT: 7 (rmb detach on trimCache) 
+// ** IMPL COUNT: 8 (rmb detach on trimCache) 
 // 2 ways to impl, Node class with both key and value,
 // or reverseLookup to retrieve key
 // Summary: get and put methods check for existing Node, length check on put method
