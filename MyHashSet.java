@@ -1,3 +1,4 @@
+// 2nd impl
 class MyHashSet {
     private int size;
     private List<List<Integer>> bucketList;
