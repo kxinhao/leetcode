@@ -1,4 +1,4 @@
-// 2nd impl
+// 3rd impl (chaining) 
 class MyHashSet {
     private int size;
     private List<List<Integer>> bucketList;
