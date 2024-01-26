@@ -28,13 +28,13 @@ class MyHashMap {
         int ind = this.hash(key);
         // node with key at bucket of bucketArr[ind] was removed,  
         // new node will be prepended to start of bucket
-        Node node = new Node(key, value, bucketArr[ind]);
-        bucketArr[ind] = node;
+        Node node = new Node(key, value, this.bucketArr[ind]);
+        this.bucketArr[ind] = node;
     }
     
     public int get(int key) {
         int ind = this.hash(key);
-        Node node = bucketArr[ind];
+        Node node = this.bucketArr[ind];
         while(node!=null) {
             if(node.key == key) {
                 return node.value;
@@ -46,14 +46,14 @@ class MyHashMap {
     
     public void remove(int key) {
         int ind = this.hash(key);
-        Node node = bucketArr[ind];
+        Node node = this.bucketArr[ind];
         if (node == null) {
           return;
         }
         // if first node in bucket, set to next node
         // which is null or next node ref
         if (node.key == key) {
-          bucketArr[ind] = node.next;
+          this.bucketArr[ind] = node.next;
         }
         // else, proceed through bucket and find next node with key
         // and set next node ref to next of next node
