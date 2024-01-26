@@ -12,7 +12,6 @@ class MyHashSet {
     // chaining method
     private static final int size = 10007;
     private Node[] bucketArr;
-    private List<List<Integer>> bucketList;
 
     public MyHashSet() {
         this.bucketArr = new Node[this.size];
