@@ -1,4 +1,6 @@
 class MyHashSet {
+
+    // simplified SLL, since no need for <k,v> just kin hashSet, to rep bucket
     class Node {
         private int key;
         private Node next;
@@ -9,7 +11,7 @@ class MyHashSet {
         }
     }
 
-    // chaining method
+    // chaining method, use prime size to min collisions
     private static final int size = 10007;
     private Node[] bucketArr;
 
