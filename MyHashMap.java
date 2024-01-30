@@ -1,4 +1,4 @@
-// 1st impl
+// 2nd impl
 class MyHashMap {
 
     // bucket rep
