@@ -1,3 +1,4 @@
+// 4th impl
 class MyHashSet {
 
     // simplified SLL, since no need for <k,v> just kin hashSet, to rep bucket
@@ -35,6 +36,7 @@ class MyHashSet {
             return;
         }
         if (node.key == key) {
+            // arr ref
             this.bucketArr[ind] = node.next;
         } else
             for (; node.next != null; node = node.next) {
