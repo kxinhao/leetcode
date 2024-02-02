@@ -1,9 +1,10 @@
 // 2nd impl
 class MyHashMap {
 
-    // bucket rep
+    // SLL to rep bucket 
     private class Node {
         int key, value;
+        // use next node in constructor to add on to SLL
         Node next;
         public Node(int key, int value, Node next){
             this.key = key;
@@ -13,21 +14,19 @@ class MyHashMap {
     }
 
     // setting size to prime no to minimize collision when hashing
-    static final int size = 10007;
-    Node[] bucketArr;
+    private static final int size = 10007;
+    private Node[] bucketArr;
 
     public MyHashMap() {
         this.bucketArr = new Node[this.size];
     }
 
-    private int hash(int key) {
-        return key % this.size;
-    }
     
     public void put(int key, int value) {
+        // node with key at bucket of bucketArr[ind] is removed,  
+        // essentially update of value at key location if exists
         this.remove(key);
         int ind = this.hash(key);
-        // node with key at bucket of bucketArr[ind] was removed,  
         // new node will be prepended to start of bucket
         Node node = new Node(key, value, this.bucketArr[ind]);
         this.bucketArr[ind] = node;
@@ -45,6 +44,7 @@ class MyHashMap {
         return -1;
     }
     
+    // shared with hashset
     public void remove(int key) {
         int ind = this.hash(key);
         Node node = this.bucketArr[ind];
@@ -64,6 +64,10 @@ class MyHashMap {
             return;
           }
         }
+    }
+
+    private int hash(int key) {
+      return key % this.size;
     }
 }
 

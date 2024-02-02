@@ -4,6 +4,7 @@ class MyHashSet {
     // simplified SLL, since no need for <k,v> just kin hashSet, to rep bucket
     class Node {
         private int key;
+        // using next node for constructor method
         private Node next;
 
         public Node(int key, Node next) {
@@ -23,12 +24,14 @@ class MyHashSet {
     public void add(int key) {
         int ind = this.hash(key);
         Node node = this.bucketArr[ind];
+        // only add after check contains as set only has unique
         if (!this.contains(key)) {
             node = new Node(key, this.bucketArr[ind]);
             this.bucketArr[ind] = node;
         }
     }
 
+    // shared with hashmap
     public void remove(int key) {
         int ind = this.hash(key);
         Node node = this.bucketArr[ind];
