@@ -7,6 +7,7 @@ class NumArray {
       // init first element of prefix arr
       prefix[0] = nums[0];
       // populate prefix arr with cumulative sum of nums arr elements
+      // summation operation at array population time, complexity O(n)
       for(int i = 1; i < n; i++) {
         prefix[i] = nums[i] + prefix[i-1];
       }
@@ -14,7 +15,7 @@ class NumArray {
     }
     
     public int sumRange(int left, int right) {
-      // if left index is not 0, use left-1 (sum thus far before index of left) 
+      // account for left = 0 case else use summation prior to left ind
       return prefix[right] - ((left == 0) ? 0: prefix[left-1]); 
     }
 }
