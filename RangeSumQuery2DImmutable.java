@@ -1,3 +1,4 @@
+// 2nd impl, without null padding and full compre sumRegion
 class NumMatrix {
 
     int[][] sum;
