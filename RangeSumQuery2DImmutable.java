@@ -1,4 +1,4 @@
-// 3rd impl, using padding method
+// 4th impl, using padding and simplified sumRegion
 class NumMatrix {
 
     int[][] sum;
@@ -9,6 +9,7 @@ class NumMatrix {
         sum = new int[rowCount+1][colCount+1]; 
         for(int i = 1; i <= rowCount; i++) {
           for(int j = 1; j <= colCount; j++) {
+            // sum of row above, col to left, matrix element value and subtract added row/col overlap 
             sum[i][j] = sum[i-1][j] + sum[i][j-1] - sum[i-1][j-1] + matrix[i-1][j-1];
           }
         }
