@@ -1,4 +1,4 @@
-// 2nd sol, using array summation and subtraction of indv elements
+// 3rd sol, using array summation and subtraction of indv elements
 class Solution {
     public int pivotIndex(int[] nums) {
       int sum = 0;
