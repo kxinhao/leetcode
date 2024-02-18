@@ -1,4 +1,4 @@
-// 5th impl
+// 6th impl
 class NumMatrix {
 
     int[][] sum;
