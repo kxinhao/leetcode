@@ -1,4 +1,4 @@
-// 1st solution from ans
+// 1st solution from ans (first pass R to L using curr * nums[i])
 class Solution {
     public int[] productExceptSelf(int[] nums) {
         int[] ans = new int[nums.length];
