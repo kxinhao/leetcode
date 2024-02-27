@@ -6,7 +6,7 @@ class Solution {
         int curr = 1;
         // populate prod of left to right excluding curr element
         for(int i = 0; i < nums.length; i++) {
-            ans[i] = curr;
+            ans[i] = curr;  // first pass population of values, no mult
             curr *= nums[i]; // prep for next ans[i] left to right
         }
         // L to R pass results ans[1,1,2,6]
@@ -15,7 +15,7 @@ class Solution {
         curr = 1;
         // layer population of right to left with existing prod arr, excluding curr elem
         for(int i = nums.length-1; i>= 0; i--) {
-            ans[i] *= curr; // 6x1=6, 2*4=8, 1*12=12, 1*24=24
+            ans[i] *= curr; // mult with curr as 2nd pass: 6x1=6, 2*4=8, 1*12=12, 1*24=24
             // formulation of curr value for index i-1 calculation of ans[i]
             curr *= nums[i]; // prep ans[i] right to left: 1*4=4, 4*3=12, 12*2=24, 24*1=24(not used)
         }
