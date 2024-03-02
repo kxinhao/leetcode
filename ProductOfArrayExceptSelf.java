@@ -1,4 +1,4 @@
-// 2nd solution (using L to R + R to L pass, using curr to store curr prod prog)
+// 3rd solution (using L to R + R to L pass, using curr to store curr prod prog)
 class Solution {
     public int[] productExceptSelf(int[] nums) {
         int[] ans = new int[nums.length];
