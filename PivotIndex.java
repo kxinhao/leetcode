@@ -1,4 +1,4 @@
-// 4th impl, using array summation and subtraction of indv elements
+// 5th impl
 class Solution {
     public int pivotIndex(int[] nums) {
       int sum = 0;
