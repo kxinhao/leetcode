@@ -1,4 +1,4 @@
-// 5th impl
+// 6th impl
 class Solution {
     public int pivotIndex(int[] nums) {
       int sum = 0;
