@@ -1,4 +1,4 @@
-// 4th solution (first pass L to R, then R to L; curr init to 1 on start of both runs to rep prod except self)
+// 5th solution (first pass L to R, then R to L; curr init to 1 on start of both runs to rep prod except self)
 class Solution {
     public int[] productExceptSelf(int[] nums) {
         int[] ans = new int[nums.length];
