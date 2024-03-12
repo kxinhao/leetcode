@@ -9,10 +9,10 @@ class Solution {
                 stack.push('}'); 
             } else if (c=='[') {
                 stack.push(']');
-            } else if (stack.isEmpty() || stack.pop()!=c) {
+            } else if (stack.empty() || stack.pop()!=c) {
                 return false;
             }
         }   
-        return stack.isEmpty();
+        return stack.empty();
     }
 }
