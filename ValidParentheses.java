@@ -1,4 +1,5 @@
- class Solution {
+//  2nd impl, using stack data struct class and push in compl parentheses
+class Solution {
     public boolean isValid(String s) {
         Stack<Character> stack = new Stack<Character>();
         for(char c : s.toCharArray()) {
