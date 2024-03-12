@@ -1,3 +1,5 @@
+// 3rd soln, use map to store int value and their occurance index, then subtract current from target to check map containsKey
+// rmb to init array with values by new int[]{values};
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         Map<Integer,Integer> map = new HashMap<>();
