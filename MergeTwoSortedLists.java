@@ -1,4 +1,4 @@
-// 1st impl, recursion/iterative (recursion may result in stack overflow when facing larger input)
+// 2nd impl, recursion/iterative (recursion may result in stack overflow when facing larger input)
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -24,8 +24,7 @@ class Solution {
             return list2;
         }
       */ 
-        if(list1 == null) return list2;
-        else if(list2 == null) return list1;
+        if(list1 == null || list2 == null) return list1 == null ? list2 : list1;
         ListNode ans = new ListNode(0);
         ListNode curr = ans;
         while(list1!=null && list2!=null) {
