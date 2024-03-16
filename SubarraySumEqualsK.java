@@ -1,4 +1,4 @@
-// 6th impl, store occurences of (subarraySum - k) in map
+// 7th impl, store occurences of (subarraySum - k) in map
 class Solution {
     public int subarraySum(int[] nums, int k) {
         HashMap<Integer, Integer> map = new HashMap<>();
