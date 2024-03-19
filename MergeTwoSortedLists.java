@@ -1,4 +1,4 @@
-// 3nd impl, recursion/iterative (recursion may result in stack overflow when facing larger input)
+// 4h impl, recursion/iterative (recursion may result in stack overflow when facing larger input)
 // rmb to return next of ans node, 1st node is empty due to initialization
 /**
  * Definition for singly-linked list.
