@@ -1,7 +1,24 @@
-// brute force implementation with stringbuilder and language methods
+// using dual pointers converging, time compl O(N), space compl O(1)
 class Solution {
     public boolean isPalindrome(String s) {
-        s = s.toLowerCase().replaceAll("[^0-9a-z]", "");
-        return s.equals(new StringBuilder(s).reverse().toString());
+        int lInd = 0, rInd = s.length()-1;
+
+        while(lInd < rInd) {
+          char lChar = s.charAt(lInd), rChar = s.charAt(rInd);
+          if(!Character.isLetterOrDigit(lChar)) {
+            lInd++;
+            continue;
+          }
+          if(!Character.isLetterOrDigit(rChar)) {
+            rInd--;
+            continue;
+          }
+          if(Character.toLowerCase(lChar) != Character.toLowerCase(rChar)) {
+            return false;
+          }
+          lInd++;
+          rInd--;
+        }
+        return true;
     }
 }
