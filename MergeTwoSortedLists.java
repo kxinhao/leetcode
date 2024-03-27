@@ -1,4 +1,4 @@
-// 4h impl, recursion/iterative (recursion may result in stack overflow when facing larger input)
+// 6th impl, using actual splicing of lists
 // rmb to return next of ans node, 1st node is empty due to initialization
 /**
  * Definition for singly-linked list.
@@ -12,7 +12,7 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-      /*
+        /* Recursion method
         // terminal conditions
         if(list1 == null) return list2;
         if(list2 == null) return list1;
@@ -24,7 +24,9 @@ class Solution {
             list2.next = mergeTwoLists(list1, list2.next);
             return list2;
         }
-      */ 
+        */
+      // Iterative method
+        /*
         if(list1 == null || list2 == null) return list1 == null ? list2 : list1;
         ListNode ans = new ListNode(0);
         ListNode curr = ans;
@@ -40,5 +42,26 @@ class Solution {
         }
         curr.next = (list1 == null ? list2 : list1);
         return ans.next;
+        */
+      // input mutational, iterative method
+      if(list1 == null || list2 == null) return list1 == null ? list2 : list1;
+      if(list1.value>list2.value) {
+        ListNode tmp = list1;
+        list1 = list2;
+        list2 = tmp;
+      }
+      ListNode head = list1;
+      while(list1.next!=null && list2!=null) {
+        if(list1.next.value<list2.value) {
+          list1 = list1.next;
+        } else {
+          ListNode tmp = list2.next;
+          list2.next = list1.next;
+          list1.next = list2;
+          list2 = tmp;
+        }
+      }
+      list1.next = list1.next == null ? list2 : list1.next;
+      return head;
     }
 }
