@@ -1,4 +1,4 @@
-// 7th impl, store occurences of (subarraySum - k) in map
+// 8th impl, store occurences of (subarraySum - k) in map
 class Solution {
     public int subarraySum(int[] nums, int k) {
         HashMap<Integer, Integer> map = new HashMap<>();
@@ -8,10 +8,12 @@ class Solution {
         for (int i = 0; i<nums.length; i++) {
             sum += nums[i];
             // [1,2,3] , k = 3
-            // k = sum[end] - sum[start] (meaning sum of vals seq from start to end = k)
-            // 3 = 1+2 - 0
-            // 3 = 1+2+3 - 1+2
+            // (value k obtained from sum of vals to end ind - sum of vals to start ind)
+            // k = sum[end] - sum[start] 
+            // 3 = 1+2 - 0 (3 obtained from starting with value at start of array and end ind 1)
+            // 3 = 1+2+3 - 1+2 (value sum starting ind 1 and end ind 2)
             // sum[start] = sum[end] - k,
+            // contiguous array starting seq sum = cont array final seq sum - k value
             // 0 = 1+2 - 3
             // 1+2 = 1+2+3 - 3
             // retrieve occurences of sum[start] to find how many possible variations of deriving k

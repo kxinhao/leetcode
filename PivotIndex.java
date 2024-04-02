@@ -1,11 +1,10 @@
-// 7th impl
+// 8th impl
 class Solution {
     public int pivotIndex(int[] nums) {
-      int sum = 0;
+      int sum = 0, lSum = 0;
       for(int num : nums) {
         sum += num;
       }
-      int lSum = 0;
       for(int i = 0; i < nums.length; i++) {
         // represent movement of ind to right, removal of index value from sum
         sum -= nums[i];
