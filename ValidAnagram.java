@@ -1,4 +1,5 @@
-// 2nd soln, array comparision with ascii char value / hashmap usage
+// 3rd impl, init alphabet occurence array for both strings 
+// and increment on each ascii char ind appearance
 class Solution {
     public boolean isAnagram(String s, String t) {
         if(s.length()!=t.length()) return false;
