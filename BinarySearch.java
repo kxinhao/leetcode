@@ -1,7 +1,9 @@
+// 2nd impl
 // (O)log n assuming sorted array
 // checks middle values of array against target, if lower than check right, if higher check left
 // if m != target, new bounds excludes m (lower assigns new lo to m+1, higher assigns hi to m)
 // essentially halving search area each pass
+// m can be assigned to hi as formula deriving m results at max hi-1
 class Solution {
     public int search(int[] nums, int target) {
         int lo = 0, hi = nums.length;
