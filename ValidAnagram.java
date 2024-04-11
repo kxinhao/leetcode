@@ -1,5 +1,6 @@
-// 3rd impl, init alphabet occurence array for both strings 
+// 4th impl, init alphabet occurence array for both strings 
 // and increment on each ascii char ind appearance
+// to account for unicode chars, use HashMap and codePointAt method on String/Character
 class Solution {
     public boolean isAnagram(String s, String t) {
         if(s.length()!=t.length()) return false;
@@ -18,20 +19,16 @@ class Solution {
     }
   /*
     if(s.length()!=t.length()) return false;
-        int arrsLength = s.length();
-        Map<Character,Integer> sMap = new HashMap<>();
-        Map<Character,Integer> tMap = new HashMap<>();
-        for(int i = 0; i < arrsLength; i++) {
-            sMap.put(s.charAt(i),sMap.getOrDefault(s.charAt(i),0)+1);
-            tMap.put(t.charAt(i),tMap.getOrDefault(t.charAt(i),0)+1);
+        HashMap<Integer, Integer> sMap = new HashMap<>();
+        HashMap<Integer, Integer> tMap = new HashMap<>();
+        for(int i = 0; i<s.length(); i++) {
+            sMap.put(s.codePointAt(i), sMap.getOrDefault(s.codePointAt(i), 0) +1);
+            tMap.put(t.codePointAt(i), tMap.getOrDefault(t.codePointAt(i), 0) +1);
         }
-        for(Map.Entry<Character, Integer> entry : sMap.entrySet()) {
-            char ch = entry.getKey();
-            int count = entry.getValue();
-            if(!tMap.containsKey(ch) || count != tMap.get(ch)){
-                return false;
-            }
+        if(sMap.equals(tMap)) {
+            return true;
         }
-    return true;
-  */
+        return false;
+    }
+   */
 }
