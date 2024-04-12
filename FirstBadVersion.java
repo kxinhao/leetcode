@@ -1,4 +1,4 @@
-// binary search variant
+// 2nd impl, binary search variant
 // track left bound of left/right bound(ind), no need to find and return m value
 // using isBadVersion(m-1)
 /* The isBadVersion API is defined in the parent class VersionControl.
