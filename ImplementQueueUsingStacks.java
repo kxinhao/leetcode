@@ -12,6 +12,7 @@ class MyQueue {
         input.push(x);
     }
     
+    // pop and peek shares method of moving last pushed item to output stack
     public int pop() {
         peek();
         return output.pop();
