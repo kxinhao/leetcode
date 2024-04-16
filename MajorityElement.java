@@ -1,4 +1,4 @@
-// Boyer-Moore Majority Vote Algorithm; linear TC O(n), constant SC O(1)
+// Boyer-Moore Majority Vote Algorithm (single pass version); linear TC O(n), constant SC O(1)
 // sort and get middle element; logarithmic TC O(nlogn), constant SC O(1)
 // hashmap population; linear TC O(n), linear SC O(n)
 class Solution {
