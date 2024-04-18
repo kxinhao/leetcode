@@ -13,6 +13,7 @@
  *     }
  * }
  */
+// 2nd impl: goes all the way to deepest node and calculates difference in height with sibling
 class Solution {
     private boolean result = true;
     public boolean isBalanced(TreeNode root) {
@@ -23,6 +24,7 @@ class Solution {
         if(root == null) return 0;
         int l = maxDepth(root.left);
         int r = maxDepth(root.right);
+        // use Math.abs to get true height diff
         if(Math.abs(l-r)>1) {
             result = false;
         }
