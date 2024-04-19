@@ -1,5 +1,4 @@
-// soln: for each node, count left + right edges and replace largest total 
-//       distance if longer.
+// soln: for each node, count left + right heights and replace largest total if larger
 // Hint: Balanced Binary Tree derivation
 /**
  * Definition for a binary tree node.
