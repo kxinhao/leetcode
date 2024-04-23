@@ -3,7 +3,8 @@ class Solution {
     public int subarraySum(int[] nums, int k) {
         HashMap<Integer, Integer> map = new HashMap<>();
         int count = 0, sum = 0;
-        // init map of sum values with 0 count 1 to account for first pass starting from nums[0] to get sum = k
+        // init map of sum values with 0 count 1 to account for test case where
+        // first pass starting from nums[0] results in sum = k
         map.put(0,1);
         for (int i = 0; i<nums.length; i++) {
             sum += nums[i];
@@ -17,6 +18,8 @@ class Solution {
             // 0 = 1+2 - 3
             // 1+2 = 1+2+3 - 3
             // retrieve occurences of sum[start] to find how many possible variations of deriving k
+
+            // if there already has been an occurrence of k and the new sum - k will give k, +1 occurence
             count += map.getOrDefault(sum-k,0);
             // sum value count increment and update in map
             map.put(sum, map.getOrDefault(sum,0)+1);
