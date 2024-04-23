@@ -10,7 +10,7 @@
  * }
  */
 public class Solution {
-    // dual pointer travelling at diff speed to loop and meet if cycle is present
+    // dual pointer travelling at 2x speed to loop and meet if cycle is present
     public boolean hasCycle(ListNode head) {
         if(head==null || head.next==null) {
             return false;
