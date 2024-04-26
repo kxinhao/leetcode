@@ -1,4 +1,4 @@
-// 2nd soln using dp O(n) time complexity
+// 3rd soln using dp O(n) time complexity
 // dp: single pass, using a negative result of previous element to reset window start to current index
 // brute force approach is O(n^3) time complexity
 class Solution {
