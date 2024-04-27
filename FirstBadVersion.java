@@ -1,3 +1,7 @@
+/**
+ * LeetCode 278 First Bad Version (Easy)
+ */
+
 // 2nd impl, binary search variant
 // track left bound of left/right bound(ind), no need to find and return m value
 // using isBadVersion(m-1)

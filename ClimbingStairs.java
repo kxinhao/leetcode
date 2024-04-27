@@ -1,3 +1,7 @@
+/**
+ * LeetCode 70 Climbing Stairs (Easy)
+ */
+
 // modified right shifted fibonacci sequence, n=1 and n=0 both result in 1 step taken 
 // to give n=2 total of 2 ways (2+0),(1+1);
 // uses 2 variables to track n-1 and n-2 to get n ways to climb stairs

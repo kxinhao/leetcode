@@ -1,3 +1,7 @@
+/**
+ * LeetCode 67 Add Binary (Easy)
+ */
+
 class Solution {
     public String addBinary(String a, String b) {
         // a = 1010, b = 1011, expected ans = 10101

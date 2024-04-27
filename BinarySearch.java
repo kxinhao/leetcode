@@ -1,3 +1,6 @@
+/**
+ * LeetCode 704 Binary Search (Easy)
+ */
 // 2nd impl
 // (O)log n assuming sorted array
 // checks middle values of array against target, if lower than check right, if higher check left
