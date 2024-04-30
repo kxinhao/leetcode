@@ -9,9 +9,10 @@ class Solution {
         int i = 0;
         int start = newInterval[0];
         int end = newInterval[1];
-        // add preintersect intervals
+        // add preintersect intervals (new interval starts after interval ends)
         while (i<intervals.length && intervals[i][1]<newInterval[0]) ans.add(intervals[i++]);
         // add intersecting intervals by merging to lowest start and highest end
+        // (interval starts before end of new interval)
         while (i<intervals.length && intervals[i][0]<=newInterval[1]) {
             start = Math.min(start,intervals[i][0]);
             end = Math.max(end,intervals[i][1]);
@@ -19,6 +20,7 @@ class Solution {
         }
         ans.add(new int[]{start,end});
         // add post intersect intervals
+        // (interval starts after end of new interval)
         while(i<intervals.length) ans.add(intervals[i++]);
         return ans.toArray(new int [ans.size()][2]);
     }
