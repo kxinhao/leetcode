@@ -1,5 +1,6 @@
 /**
  * LeetCode 57 Insert Interval (Medium)
+ * 3 cases to account for, pre intersect of newInterval, post intersect and intersecting intervals
  * brute force impl, failed at non overlap new interval test
  * 2nd try ans derived from solutions, using arraylist and single pass index tracking operations
  */
