@@ -11,7 +11,7 @@ class Solution {
         int end = newInterval[1];
         // add preintersect intervals
         while (i<intervals.length && intervals[i][1]<newInterval[0]) ans.add(intervals[i++]);
-        // add intersecting intervals
+        // add intersecting intervals by merging to lowest start and highest end
         while (i<intervals.length && intervals[i][0]<=newInterval[1]) {
             start = Math.min(start,intervals[i][0]);
             end = Math.max(end,intervals[i][1]);
