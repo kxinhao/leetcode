@@ -3,6 +3,7 @@
  * using private int[] class/array to store coords 
  * bfs from each 0 value coord to populate matrix with distance values
  */
+// 2nd impl
 // eg [[0,0,0],[0,1,0],[1,1,1]]
 class Solution {
     // store right/left/up/down directions in 2d array for traversal
