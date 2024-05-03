@@ -3,7 +3,7 @@
  * using private int[] class/array to store coords 
  * bfs from each 0 value coord to populate matrix with distance values
  */
-// 2nd impl
+// 3rd impl
 // eg [[0,0,0],[0,1,0],[1,1,1]]
 class Solution {
     // store right/left/up/down directions in 2d array for traversal
@@ -27,7 +27,7 @@ class Solution {
         int length = 0;
         while (!queue.isEmpty()) {
             int size = queue.size();
-            length++;
+            length++; // width of search distance
             for(int i = 0; i<size; i++) {
                 // extraction of 0 value coords
                 int[] curr = queue.poll();
