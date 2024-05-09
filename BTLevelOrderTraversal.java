@@ -18,7 +18,7 @@ class Solution {
         // only element will be added to level arraylist
         // ie. ans.size() = 0, level = 0 for root addition, ans.size() = 1
         // ans.size() = 1, level = 1, {{3},{9}}; ans.size = 2, level 1, {{3},{9,20}}
-        if(ans.size()==level) ans.add(new ArrayList<Integer>()); 
+        if(ans.size()==level) ans.add(new ArrayList<Integer>()); // confirm new level is reached
         ans.get(level).add(curr.val);
         levelTraverse(ans, curr.left, level+1);
         levelTraverse(ans, curr.right, level+1);
