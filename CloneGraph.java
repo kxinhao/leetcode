@@ -9,7 +9,7 @@ class Solution {
         public HashMap<Integer, Node> map = new HashMap<>();
         public Node cloneGraph(Node node) {
             if(node==null) return null;
-            // returns node if seen, else add to map
+            // returns node if seen, else add to map and explore new node's neighbors
             if(map.contains(node.val)) return map.get(node.val);
             Node newNode = new Node(node.val, new ArrayList<Node>());
             map.put(node.val, newNode);
