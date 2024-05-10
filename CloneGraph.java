@@ -14,6 +14,8 @@ class Solution {
             Node newNode = new Node(node.val, new ArrayList<Node>());
             map.put(node.val, newNode);
             // recursively call cloneGraph to add unseen nodes to neighbor list
+            // clone neighbor nodes via existing node's neighbor list and 
+            // add to new node neighbor list
             for(Node nn : node.neighbors) newNode.neighbors.add(cloneGraph(nn));
             return newNode;
         }
