@@ -2,7 +2,7 @@
  * LeetCode 207 Course Schedule (Medium)
  * Ensure no cycle so that the course list selection is completable
  * BFS (best ans found so far)
- * count edges (representing prereq courses) and subtract for each no-prereq course
+ * count edges (representing prereqs) and subtract for each no-prereq course
  * and derivative course found, if 0 at the end, means schedule is possible
  */
 // 2nd impl
