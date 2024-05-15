@@ -8,7 +8,7 @@
 // 1st impl
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        List<Integer>[] inCourse = new List[numCourses]; // array to store list of prereq courses
+        List<Integer>[] inCourse = new List[numCourses]; // array to store list of succeeding courses
         Queue<Integer> queue = new LinkedList<Integer>(); // stores courses with no prereq
         int[] incomingEdges = new int[numCourses]; // courses to be taken 
         int edgeCnt = prerequisites.length;
