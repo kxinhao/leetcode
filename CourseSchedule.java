@@ -5,12 +5,12 @@
  * count edges (representing prereq courses) and subtract for each no-prereq course
  * and derivative course found, if 0 at the end, means schedule is possible
  */
-// 1st impl
+// 2nd impl
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         List<Integer>[] inCourse = new List[numCourses]; // array to store list of succeeding courses
         Queue<Integer> queue = new LinkedList<Integer>(); // stores courses with no prereq
-        int[] incomingEdges = new int[numCourses]; // courses to be taken 
+        int[] incomingEdges = new int[numCourses]; // prereq courses for ind crs 
         int edgeCnt = prerequisites.length;
 
         for(int i=0; i<inCourse.length; i++) {
