@@ -14,7 +14,7 @@ class Solution {
             goCourses[i] = new LinkedList<Integer>();
         }
         // store prereq count for each course (pre[0]) in incomingEdges array
-        // add course (pre[0]) to list for which array element goCourses is prereq to (pre[1])
+        // add course (pre[0]) to list of courses which have (pre[1]) as prereq
         for(int[] pre : prerequisites) {
             incomingEdges[pre[0]]++;
             goCourses[pre[1]].add(pre[0]);
