@@ -1,11 +1,11 @@
 /**
  * LeetCode 207 Course Schedule (Medium)
- * Ensure no cycle so that the course list selection is completable
- * BFS (best ans found so far) Topological sorting via Kahn's algorithm (partial, to check possibility)
+ * Ensure no cycle so that the course list selection is completable (Directed Acyclic Graph)
+ * BFS (best ans found so far) Topological sorting via Kahn's algorithm (partial, possibility check)
  * count edges (representing prereqs) and subtract for each no-prereq course
  * and derivative course found, if 0 at the end, means schedule is possible
  */
-// 3rd impl
+// 4th impl
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         List<Integer>[] inCourse = new List[numCourses]; // list of courses with ind as prereq
