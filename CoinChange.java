@@ -1,10 +1,10 @@
 /**
  * LeetCode 322 Coin Change (Medium)
- * DP
+ * DP tabulation
  * coin denomination that can be used increases as dp array is formed from bottom up,
- * thus coin count may decrease when replacing lower value denominations in consideration
- * of summation to amount
+ * thus coin count may decrease when replacing lower value denominations
  */
+// 1st impl
 // eg. [1,2,5], 11
 
 class Solution {
@@ -22,7 +22,7 @@ class Solution {
             for(int coin : coins) {
                 // sum >= coin prevents overflowing desired amt from large coin value, 
                 // dp[sum-coin]!=fillVal checks that the sum less this coin value has been calculated
-                // take min of coins needed for sum vs (coins needed for sum-coin val)+1 coin
+                // take min of precalculated coins needed for sum vs (coins needed for sum-coin val)+1
                 // this replaces smaller denomination coins with larger denom, reducing coins needed
                 if(sum >= coin && dp[sum-coin] != fillVal) dp[sum] = Math.min(dp[sum],dp[sum-coin]+1);
             }
