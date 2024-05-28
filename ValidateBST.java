@@ -2,6 +2,7 @@
  * LeetCode 98 Validate Binary Search Tree (Medium)
  *
  */
+// 1st impl without Integer max/min check
 
 /**
  * Definition for a binary tree node.
