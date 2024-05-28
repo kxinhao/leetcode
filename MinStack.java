@@ -19,6 +19,7 @@ class MinStack {
    
     public void push(int val) {
         if(head == null) head = new StackNode(val, val, null);
+        // ** key point for new min val check
         else head = new StackNode(val, Math.min(val, head.min), head);
     }
     
