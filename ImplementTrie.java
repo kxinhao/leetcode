@@ -1,8 +1,9 @@
 /**
  * LeetCode 208 Implement Trie (Medium)
- *
+ * implement class TrieNode with array of alphabets representing possible children and boolean isWord
+ * use character ascii value representation to match to array
  */
-
+// 1st impl
 class Trie {
 
     class TrieNode {
