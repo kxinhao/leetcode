@@ -6,6 +6,8 @@
 
 class Solution {
     public int numIslands(char[][] grid) {
+        // immediate return for empty grid
+        if(grid.length==0||grid==null) return 0;
         int count = 0;
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
