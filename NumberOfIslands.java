@@ -63,11 +63,7 @@ class Solution {
             for(int[] dir : dirs) {
                 int x = curr[0] + dir[0];
                 int y = curr[1] + dir[1];
-<<<<<<< HEAD
                 if(x<0 || y<0 || x>=grid.length || y>= grid[0].length || visited[x][y] || grid[x][y]=='0')
-=======
-                if(x<0 || y<0 || x>=grid.length || y>= grid[0].length || visited[x][y])
->>>>>>> main
                     continue;
                 visited[x][y] = true;
                 queue.offer(new int[]{x,y});
