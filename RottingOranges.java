@@ -48,6 +48,7 @@ class Solution {
         // if fresh != 0, means unreachable fresh oranges exist, return -1
         return fresh == 0 ? time : -1;
     }
+
     private boolean hasFreshOrange(int[][] grid, int i, int j) {
         if(i<0||j<0||i>=grid.length||j>=grid[0].length||grid[i][j]!=1) return false;
         grid[i][j] = 2;
