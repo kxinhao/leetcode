@@ -5,9 +5,10 @@
  * expansion from 1d ind to matrix indices:
  * x = 1d_Ind / grid[0].length
  * y = 1d_Ind % grid[0].length
- * alternative is to store matrix coords in queue
+ * alternative is to store matrix coords in queue, no diff in performance
  * Time Complexity: O(nm), Space Complexity: O(nm);
  */
+// 2nd impl, using array for coords in queue
 
 class Solution {
     private final int[][] dirs = {{1,0},{-1,0},{0,1},{0,-1}};
