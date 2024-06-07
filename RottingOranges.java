@@ -8,7 +8,7 @@
  * alternative is to store matrix coords in queue, no diff in performance
  * Time Complexity: O(nm), Space Complexity: O(nm);
  */
-// 2nd impl, using array for coords in queue
+// 3rd impl, replace break when fresh==0 with return of time to improve performance
 
 class Solution {
     private final int[][] dirs = {{1,0},{-1,0},{0,1},{0,-1}};
@@ -39,8 +39,8 @@ class Solution {
                     int nextY = y + dir[1];
                     if(hasFreshOrange(grid, nextX, nextY)) {
                         queue.offer(nextX * n + nextY);
-                        // decrease fresh count and break if no more left
-                        if(fresh--==0) break;
+                        // decrease fresh count and return time when no fresh remains
+                        if(fresh--==0) return time;
                     }
                 }
             }
