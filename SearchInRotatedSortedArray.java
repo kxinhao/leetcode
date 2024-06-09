@@ -1,7 +1,7 @@
 /**
  * LeetCode 33 Search in Rotated Sorted Array (Medium)
  * First determine nums[mid] is in sorted or rotated part of array
- * then reposition lo and hi pointers based on comparison to target value
+ * then disregard 1st or 2nd half of array based on comparison to target value
  * repeat until target appears at arr[mid] then return ind value
  */
 // binary search for TC O(logn)
@@ -16,6 +16,7 @@ class Solution {
 
             // nums[mid] is in the sorted part of nums (7)
             if(nums[lo]<=nums[mid]) { // 4<7, 0<1
+                // check lo and hi(mid) of 1st half against target
                 // target is in 2nd half of nums, disregard 1st half (0<4, must be in right half)
                 if(target>nums[mid]||target<nums[lo]) lo = mid+1;
                 // target is in 1st half of nums, disregard 2nd half (0<1)
