@@ -7,7 +7,7 @@
  * integer may be used to find the target, if exceeds the target, move on to the next candidate value
  * when remainder results in 0, we add the values considered in temp list to ans 
  */
-// 2nd impl
+// 3rd impl
 // eg. cand = [2,3,6,7], target = 7
 
 class Solution {
@@ -28,6 +28,8 @@ class Solution {
             return list;
         } else {
             for(int i = start; i<candidates.length; i++) {
+                // if candidate[i] causes rem to be negative, skip subsequent calcs
+                if(candidates[i]>rem) continue;
                 // r2. temp = [2,2], rem = 3
                 // r3. temp = [2,2,2], rem = 1
                 // r4. temp = [2,2,2,2], rem = -1, returned list, temp = [2,2,2]
