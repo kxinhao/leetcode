@@ -3,7 +3,7 @@
  *
  */
 // eg. nums = [1,2,3]
-// 2nd impl
+// 3rd impl
 
 class Solution {
     public List<List<Integer>> permute(int[] nums) {
@@ -19,6 +19,7 @@ class Solution {
         }
         // interate through the positions in the nums array to populate same ind in ans list
         // loop 0 to curr.size() for each recursion call
+        // i<=curr.size() due to curr init size being 0, to ensure start of recursion call
         for(int i=0; i<=curr.size(); i++) {
             curr.add(i, nums[ind]);
             // i=0, ind=0, curr=[1];
