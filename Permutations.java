@@ -1,6 +1,7 @@
 /**
  * LeetCode 46 Permutations (Medium)
- *
+ * Find all unique permutations of number set by iterating size, incrementing temp list
+ * and recursively calling same operations until temp list size == nums length
  */
 // eg. nums = [1,2,3]
 // 3rd impl
@@ -20,6 +21,7 @@ class Solution {
         // interate through the positions in the nums array to populate same ind in ans list
         // loop 0 to curr.size() for each recursion call
         // i<=curr.size() due to curr init size being 0, to ensure start of recursion call
+        // utilizing 0 index property, we loop additionally for each increment in curr size
         for(int i=0; i<=curr.size(); i++) {
             curr.add(i, nums[ind]);
             // i=0, ind=0, curr=[1];
