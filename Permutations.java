@@ -2,6 +2,7 @@
  * LeetCode 46 Permutations (Medium)
  * Find all unique permutations of number set by iterating size, incrementing temp list
  * and recursively calling same operations until temp list size == nums length
+ * TC: O(N!) SC: O(N)
  */
 // eg. nums = [1,2,3]
 // 3rd impl
