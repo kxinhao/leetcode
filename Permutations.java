@@ -33,7 +33,6 @@ class Solution {
             //                       i=1, ind=1, curr=[1,2]; i=0, ind=2, curr=[3,1,2]
             //                                   curr=[1,2]; i=1, ind=2, curr=[1,3,2]
             //                                   curr=[1,2]; i=2, ind=2, curr=[1,2,3]
-            if(curr.size()>nums.length) break;
             backtrack(nums, ind+1, ans, curr);
             curr.remove(i);
         }
