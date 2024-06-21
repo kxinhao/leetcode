@@ -4,6 +4,7 @@
  * must sort to prevent any missed overlaps of intervals at end of array
  * eg. [1,10] at [[2,3],[4,5],[6,7],[8,9],[1,10]]
  */
+// 1st impl with lambda comparator from soln and merge conditions from prior qns
 
 class Solution {
     public int[][] merge(int[][] intervals) {
@@ -16,9 +17,13 @@ class Solution {
         int[] curr = intervals[0];
         ans.add(curr);
         for(int[] interval : intervals) {
+            // curr end is larger than next start means that curr and next intersect
+            // merge the 2 intervals by taking the max of boths end replacing curr end
             if(interval[0] <= curr[1]) {
                 curr[1] = Math.max(curr[1], interval[1]);
-            } else {
+            }
+            // if no intersect, assign next to curr and add to ans list 
+            else {
                 curr = interval;
                 ans.add(curr);
             }
