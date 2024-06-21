@@ -2,10 +2,16 @@
  * LeetCode 39 Combination Sum (Medium)
  * Distinct candidate integers and requires list of all unique combinations of candidates summing
  * to target integer.
+ *
  * First sort to ensure we initate iterating from the lowest value candidate
  * Check each candidate integer to find if they sum to target, by discovering how many copies of the
- * integer may be used to find the target, if exceeds the target, move on to the next candidate value
- * when remainder results in 0, we add the values considered in temp list to ans 
+ * integer may be used to find the target, if exceeds the target, move on to the next candidate value.
+ * When remainder results in 0, we add the values considered in temp list to ans 
+ *
+ * TC: O(N^target) Exponential TC
+ * Every time you have N choice (since you can use number repeatedly), 
+ * and you can choose at most target times (actually it's smaller than target),
+ * so we can assume the worst-case time complexity is O(N^target).
  */
 // 3rd impl
 // eg. cand = [2,3,6,7], target = 7
@@ -29,7 +35,7 @@ class Solution {
         } else {
             for(int i = start; i<candidates.length; i++) {
                 // if candidate[i] causes rem to be negative, skip subsequent calcs
-                if(candidates[i]>rem) continue;
+                if(candidates[i]>rem) break;
                 // r2. temp = [2,2], rem = 3
                 // r3. temp = [2,2,2], rem = 1
                 // r4. temp = [2,2,2,2], rem = -1, returned list, temp = [2,2,2]
@@ -40,8 +46,9 @@ class Solution {
                 // r9. temp = [2,3,3], rem = -1, skip candidates. [3,3,3], rem = -2
                 // r10. temp = [7], rem = 0, temp added to ans list
                 temp.add(candidates[i]);
-                // checking how many of candidate[i] we can add, remove after iterating through all candidates
-                combinate(list, temp, candidates,  rem-candidates[i],i);
+                // checking how many of candidate[i] we can add, remove after iterating through
+                // all candidates
+                combinate(list, temp, candidates,  rem-candidates[i], i);
                 temp.remove(temp.size()-1);
             }
         }
