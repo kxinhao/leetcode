@@ -5,7 +5,7 @@
  * that prev[0]<=curr[0]
  * TC O(N log(N)) log linear TC
  */
-// 1st impl with lambda comparator from soln and merge conditions from prior qns
+// 2nd impl with lambda comparator from soln and merge conditions from prior qns
 // eg. [1,10] at [[2,3],[4,5],[6,7],[8,9],[1,10]]
 
 class Solution {

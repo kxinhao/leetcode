@@ -1,7 +1,8 @@
 /**
  * LeetCode 236 Lowest Common Ancestor of Binary Tree (Medium)
- *
+ * TC: O(N) where N is number of nodes in BT
  */
+// 1st impl, post order traversal
 
 /**
  * Definition for a binary tree node.
@@ -14,9 +15,11 @@
  */
 class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        // when end of subtree or subtree l/r contains a target
         if(root==null||root==p||root==q) return root;
         TreeNode left = lowestCommonAncestor(root.left, p, q);
         TreeNode right = lowestCommonAncestor(root.right, p, q);
+        // not in one subtree, must be in the other, if not in either, go back up to root
         if(left==null) return right;
         else if(right==null) return left;
         else return root;
