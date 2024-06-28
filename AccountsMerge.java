@@ -1,5 +1,7 @@
 /**
  * LeetCode 721 Accounts Merge (Medium)
+ * using index as account id, go through each account and map the accounts which have the email
+ * to the corresponding email
  * TC: O(N Log N) sorting O(Log N) * worst case operations O(n)
  */
 
@@ -19,6 +21,7 @@ class Solution {
         boolean[] visited = new boolean[accounts.size()];
         List<List<String>> ans = new LinkedList<>();
         for(int i=0; i<accounts.size(); i++) {
+            // TreeSet for auto sort on insert
             Set<String> set = new TreeSet<>();
             dfs(i, accounts, accountMap, visited, set);
             if(!set.isEmpty()) {
