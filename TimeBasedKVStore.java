@@ -4,7 +4,7 @@
  * alt soln use TreeMap
  * TC: O(log N) binary search on get
  */
-// 1st impl
+// 3rd impl
 
 class Data {
     String val;
