@@ -1,13 +1,18 @@
 /**
  * LeetCode 721 Accounts Merge (Medium)
- * using index as account id, go through each account and map the accounts which have the email
- * to the corresponding email
- * TC: O(N Log N) sorting O(Log N) * worst case operations O(n)
+ * go through each account and map the email to the corresponding account list index number
+ * go through each account again and find all accounts and hence emails tied to the same person
+ * via dfs and tracking visited accounts
+ * TC: O(N Log N) sorting O(Log N) * worst case operations on total emails N incl dupes O(N)
  */
 
 class Solution {
     public List<List<String>> accountsMerge(List<List<String>> accounts) {
         Map<String, List<Integer>> accountMap = new HashMap<String, List<Integer>>();
+        List<List<String>> ans = new LinkedList<>();
+        boolean[] visited = new boolean[accounts.size()];
+        // map accounts tied to each email by index id
+        // eg. 'johnsmith@mail.com' : [0,1]
         for(int i=0; i<accounts.size(); i++) {
             String name = accounts.get(i).get(0);
             for(int j = 1; j<accounts.get(i).size(); j++) {
@@ -18,8 +23,7 @@ class Solution {
                 accountMap.get(email).add(i);
             }
         }
-        boolean[] visited = new boolean[accounts.size()];
-        List<List<String>> ans = new LinkedList<>();
+        // go through each account to find common emails and add to ans list
         for(int i=0; i<accounts.size(); i++) {
             // TreeSet for auto sort on insert
             Set<String> set = new TreeSet<>();
