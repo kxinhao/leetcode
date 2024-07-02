@@ -5,6 +5,7 @@
  * via dfs and tracking visited accounts
  * TC: O(N Log N) sorting O(Log N) * worst case operations on total emails N incl dupes O(N)
  */
+// 2nd impl
 
 class Solution {
     public List<List<String>> accountsMerge(List<List<String>> accounts) {
@@ -29,6 +30,7 @@ class Solution {
             Set<String> set = new TreeSet<>();
             dfs(i, accounts, accountMap, visited, set);
             if(!set.isEmpty()) {
+                // convert treeset to linkedlist
                 List<String> ll = new LinkedList<String>(set);
                 ll.add(0, accounts.get(i).get(0));
                 ans.add(ll);
