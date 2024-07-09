@@ -3,7 +3,7 @@
  * Many diff approaches
  * Trie/DP method, TC(n*k^2), n = length of s, k = length of longest word in wordDict
  */
-// 1st impl using trie impl and dp
+// 2nd impl using trie ds impl and dp
 
 class Solution {
 
@@ -57,14 +57,23 @@ class Solution {
         for(String word : wordDict) {
             words.insert(word);
         }
+        // array with s.length+1 for substring end ind exclusive
         boolean[] dp = new boolean [s.length()+1];
+        // initialize dp[0] with true to start loop
+        // dp[x] gives result of s[0:x] as substring is end index exclusive and to allow start of
+        // next word from last found word
         dp[0] = true;
         for (int i = 0; i<s.length(); i++) {
+            // skip impossible prefixes
             if(!dp[i]) continue;
+            // finding all suffixes of letter s.charAt(i) found in wordDict
+            // eg. word formed from 1st letter is ind[0:1]
             for(int j = i+1; j<=s.length(); j++) {
+                // break when no further possible suffixes are found
                 if(!words.startsWith(s.substring(i,j))) {
                     break;
                 }
+                // set end excl ind to true when word is found
                 else if(words.search(s.substring(i,j))) {
                     dp[j] = true;
                 }
