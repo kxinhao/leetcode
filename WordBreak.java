@@ -1,10 +1,12 @@
 /**
  * LeetCode 139 Word Break (Medium)
  * Many diff approaches
- * Trie/DP method, TC(n * k^2), n = length of s, k = length of longest word in wordDict
+ * Trie/DP method, quadratic time complexity or 
+ * TC(n * k^2), n = length of s, k = length of longest word in wordDict
  * Java substring has linear tc O(N) after java 7 update 6 where N is numbers in substring,
  * prev was constant tc O(1)
- * Trie search is TC(w*l) where w is num of words and l is avg length of word 
+ * Trie search is linear time complexity or 
+ * TC(w*l) where w is num of words and l is max length of word 
  * outer loops for s.length(), 
  */
 // 2nd impl using trie ds impl and dp
