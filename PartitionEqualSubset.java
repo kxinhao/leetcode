@@ -12,9 +12,9 @@ class Solution {
         int partSum = sum/2;
         boolean[] dp = new boolean[partSum+1];
         dp[0] = true;
-        for(int i : nums) {
-            for(int j = partSum; j>0; j--) {
-                if(j>=i) dp[j] = dp[j] || dp[j-i];
+        for(int num : nums) {
+            for(int i = partSum; i>0; i--) {
+                if(i>=num) dp[i] = dp[i] || dp[i-num];
             }
         }
         return dp[partSum];
