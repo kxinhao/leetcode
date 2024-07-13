@@ -1,8 +1,9 @@
 /**
  * LeetCode 416 Partition Equal Subset Sum (Medium)
  * dp solution with TC: O(N^2) where N is sum of array elements/2
+ * build dp array until summation to partSum is possible upon adding an unsummed nums[] val
  */
-// 1st impl using soln,
+// 2nd impl using soln
 
 class Solution {
     public boolean canPartition(int[] nums) {
@@ -13,8 +14,13 @@ class Solution {
         boolean[] dp = new boolean[partSum+1];
         dp[0] = true;
         for(int num : nums) {
-            for(int i = partSum; i>0; i--) {
-                if(i>=num) dp[i] = dp[i] || dp[i-num];
+            // iterate decrementally from partSum to num so as to find possible summations for 
+            // the in between values
+            for(int i = partSum; i>=num; i--) {
+                // take possibility of forming sum i and store as boolean in dp[i]
+                // use || to prevent overwrite from dp[i-num]
+                dp[i] = dp[i] || dp[i-num];
+                if(dp[partSum]) return true;
             }
         }
         return dp[partSum];
