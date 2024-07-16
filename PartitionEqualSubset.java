@@ -3,7 +3,7 @@
  * dp solution with TC: O(N^2) where N is sum of array elements/2
  * build dp array until summation to partSum is possible upon adding an unsummed nums[] val
  */
-// 2nd impl using soln
+// 3rd impl using soln
 
 class Solution {
     public boolean canPartition(int[] nums) {
