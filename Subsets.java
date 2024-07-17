@@ -1,6 +1,6 @@
 /**
  * LeetCode 78 Subsets (Medium)
- *
+ * recursion, TC: O(n^2)
  */
 
 class Solution {
