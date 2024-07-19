@@ -1,8 +1,8 @@
 /**
  * LeetCode 78 Subsets (Medium)
- * recursion, TC: O(n^2)
+ * recursion, TC: O(2^n)
  */
-// 2nd impl
+// 3rd impl
 /*
 start = 0; ans = []; temp = [1]; i=1
 start = 1; ans = [],[1]; temp = [1,2]; i=2
