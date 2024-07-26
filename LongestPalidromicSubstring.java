@@ -1,6 +1,6 @@
 /**
  * LeetCode 5 Longest Palindromic Substring (Medium)
- * 2 pointer, TC: O(N^2)
+ * 2 pointer, TC: O(N^2), O(N) going through each char in s, O(N) substring operation after java7
  * Manacher's Algo (?)
  * naive/brute force is O(N^3), O(N^2) for every substring formation and palindrome check is O(N)
  */
