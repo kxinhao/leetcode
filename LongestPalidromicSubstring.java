@@ -9,11 +9,9 @@ class Solution {
     public String longestPalindrome(String s) {
         String max="";
         for(int i = 0; i<s.length(); i++) {
-            // check from char at i
-            // odd length palindrome check
+            // check for odd length palindrome, expanding l and r from i
             String s1 = extend(s,i,i);
-            // check from string at i, i+1
-            // even length palindrome check
+            // check for even length palindrome, expanding l from i and r from i+1
             String s2 = extend(s,i,i+1);
             if(s1.length() > max.length()) max = s1;
             if(s2.length() > max.length()) max = s2;
