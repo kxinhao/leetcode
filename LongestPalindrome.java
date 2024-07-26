@@ -1,3 +1,8 @@
+/**
+ * LeetCode 409 Longest Palindrome (Easy)
+ *
+ */
+
 // run through each letter, increment in array of lower/uppercase ascii representing indexes
 // longest possible palindrome calculated by summing up all even freq letters and 
 // odd freq letters -1 and add 1 back at end of calculation if odd number was present.
