@@ -13,6 +13,7 @@ class Solution {
                 if(i==0||j==0) {
                     path[i][j] = 1;
                 }
+                // sum prev (above and left positions)
                 else {
                     path[i][j] = path[i-1][j] + path[i][j-1];
                 }
