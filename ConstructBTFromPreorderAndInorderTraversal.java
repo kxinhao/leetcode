@@ -1,8 +1,13 @@
 /**
  * LeetCode 105 Construct BT from Preorder and Inorder Traversal (Medium)
  * TC: O(N), SC: O(N) using recursion
+ * root found from preorder first element can be used to derive num of left/right nodes in
+ * inorder arr as the splitting index
+ * ind of right child for curr node in the preorder arr can be derived from:
+ *      preStart ind + numsOnLeft +1 
+ * where numsOnLeft = root - inStart
+ *
  */
-
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -18,6 +23,7 @@
  *     }
  * }
  */
+// 2nd impl
 class Solution {
     Map<Integer, Integer> inorderMap = new HashMap<>();
 
