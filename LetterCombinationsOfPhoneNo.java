@@ -1,7 +1,8 @@
 /**
  * LeetCode 17 Letter Combinations of a Phone Number (Medium)
- * Backtracking TC: O(4^N * N), SC: O(3^N)
+ * Backtracking TC: O(4^N * N) simplified O(4^N), SC: O(3^N)
  */
+// 1st impl
 
 class Solution {
     Map<Integer, String[]> keys = initKeys();
@@ -31,7 +32,9 @@ class Solution {
             ans.add(new String(sb));
             return;
         } 
+        // for retrieval from mapping, each digit in digit string
         int digit = digits.charAt(ind) - '0'; // ascii numeration
+        // for each digit pressed, get possible letters
         for(int i = 0; i<keys.get(digit).length; i++) {
             sb.append(keys.get(digit)[i]);
             combinate(digits, ans, sb, ind+1);
