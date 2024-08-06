@@ -5,6 +5,7 @@
 // 1st impl
 
 class Solution {
+    // mapping of letters to keys
     Map<Integer, String[]> keys = initKeys();
     private static Map<Integer, String[]> initKeys() {
         Map<Integer, String[]> keys = new HashMap<>();
