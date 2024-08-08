@@ -7,9 +7,9 @@
 
 class Solution {
     public boolean exist(char[][] board, String word) {
+        // find start point for word
         for(int i = 0; i<board.length; i++) {
             for(int j = 0; j<board[0].length;j++) {
-                // find start point for word
                 if(traverse(board, word, i, j, 0)) return true;
             }
         }
