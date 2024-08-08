@@ -4,6 +4,7 @@
  * SC: O(N) due to recursion use of space = input length
  * soln mutates input board array, if interview req no mutation, use visitation matrix instead
  */
+// 2nd impl
 
 class Solution {
     public boolean exist(char[][] board, String word) {
