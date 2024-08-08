@@ -3,6 +3,7 @@
  * answer derived from 242 Valid Anagrams and added sliding window logic
  * TC: O(N), SC: O(1)
  */
+// 2nd impl, rmb preliminary case of impossible anagram string length
 
 class Solution {
 		public List<Integer> findAnagrams(String s, String p) {
