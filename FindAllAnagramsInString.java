@@ -37,7 +37,7 @@ class Solution {
                 // remove freq added for char at start index
 				freqS[s.charAt(i)-'a']--;
                 // if next increment by pLen doesnt exceed sLen,
-                // add new end of possible anagram to freq arr
+                // move the window(anagram) down 1 index
 				if(i+pLen < sLen) freqS[s.charAt(i+pLen)-'a']++;
 			}
 			return ans;
