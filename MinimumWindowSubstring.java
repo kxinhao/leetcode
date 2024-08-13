@@ -42,7 +42,7 @@ class Solution {
                 char cStart = s.charAt(start);
                 // add back the freq of cStart char as we are moving away from it
                 tFreq[cStart - 'A']++;
-                // if cStart is in t and had not previously occurred in the formed ss,
+                // if cStart is in t and does not have duplicates in the formed ss,
                 // added back freq of cStart will be back to 1, hence we can increment the counter and
                 // move the end pointer
                 if(tFreq[cStart - 'A'] > 0) counter++;
