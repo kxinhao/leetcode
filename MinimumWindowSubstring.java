@@ -18,14 +18,20 @@ class Solution {
 
         while (end < s.length()) {
             char cEnd = s.charAt(end);
+            // reduce target substring counter if end char is in it
             if(tFreq[cEnd - 'A'] > 0) counter--;
+            // reduce tFreq for end char
             tFreq[cEnd - 'A']--;
+            // increment end pointer(move right)
             end++;
+            // enter loop when all char of target ss is found in the formed ss
             while(counter==0) {
+                // ???
                 if(minLength > end - start) {
                     minLength = end - start;
                     minStart = start;
                 }
+                // condition to move increment start pointer to narrow down valid ss size
                 char cStart = s.charAt(start);
                 tFreq[cStart - 'A']++;
                 if(tFreq[cStart - 'A'] > 0) counter++;
