@@ -5,6 +5,7 @@
  * Use counter of t length to check if we should increment start or end pointers
  * Use minStart and minLength to keep track of the min valid substring for return as answer
  */
+// 2nd impl
 
 class Solution {
     public String minWindow(String s, String t) {
