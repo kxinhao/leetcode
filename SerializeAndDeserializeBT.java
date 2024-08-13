@@ -1,6 +1,8 @@
 /**
  * LeetCode 297 Serialize and Deserialize Binary Tree (Hard)
- *
+ * Preorder traversal with class var representatives of SPLIT symbol and null node
+ * StringBuilder for serialization to String and Queue to store nodes for deserialization
+ * in preorder traversal
  */
 
 /**
