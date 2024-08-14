@@ -5,7 +5,7 @@
  * Use counter of t length to check if we should increment start or end pointers
  * Use minStart and minLength to keep track of the min valid substring for return as answer
  */
-// 2nd impl
+// 3rd impl
 
 class Solution {
     public String minWindow(String s, String t) {
@@ -19,12 +19,14 @@ class Solution {
 
         int start = 0, end = 0, minStart = 0, minLength = Integer.MAX_VALUE, counter = t.length();
 
+        // TODO: justification for condition??
         while (end < s.length()) {
             char cEnd = s.charAt(end);
             // reduce target substring counter if end char is in it and freq is not at 0
             // (meaning it's occurance had already happened)
             if(tFreq[cEnd - 'A'] > 0) counter--;
-            // reduce tFreq for end char, can go negative for non t-string present chars
+            // reduce tFreq for end char, duplicates cause value to be in negatives
+            // and hence help with counter value being able to sieve out unneeded duplicates in ss
             tFreq[cEnd - 'A']--;
             // increment end pointer(move right)
             end++;

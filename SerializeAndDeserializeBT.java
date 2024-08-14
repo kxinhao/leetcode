@@ -4,7 +4,7 @@
  * StringBuilder for serialization to String and Queue to store nodes for deserialization
  * in preorder traversal
  */
-// 2nd impl
+// 2nd impl, rmb to append node val when buildstring and use queue for deserialization
 
 /**
  * Definition for a binary tree node.
