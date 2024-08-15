@@ -3,10 +3,10 @@
  * TC: O(N), SC: O(1)
  * single pass soln, 2 pointer l and r moving inward, calc vol at each point
  */
+// 2nd impl
 
 class Solution {
     public int trap(int[] height) {
-        int rainWater = 0;
         if(height==null || height.length<2) return 0;
         int left = 0, right = height.length-1, maxLeft = 0, maxRight = 0;
         int waterVol = 0;
