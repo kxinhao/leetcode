@@ -5,7 +5,7 @@
  * Use counter of t length to check if we should increment start or end pointers
  * Use minStart and minLength to keep track of the min valid substring for return as answer
  */
-// 3rd impl
+// 4th impl
 
 class Solution {
     public String minWindow(String s, String t) {
@@ -19,7 +19,7 @@ class Solution {
 
         int start = 0, end = 0, minStart = 0, minLength = Integer.MAX_VALUE, counter = t.length();
 
-        // TODO: justification for condition??
+        // loop while end pointer is not at eos
         while (end < s.length()) {
             char cEnd = s.charAt(end);
             // reduce target substring counter if end char is in it and freq is not at 0
@@ -31,7 +31,7 @@ class Solution {
             // increment end pointer(move right)
             end++;
 
-            // enter loop when all char of target ss is found in the formed ss
+            // valid ss found
             while(counter==0) {
                 // if min possible length found so far is greater than length of formed ss 
                 if(minLength > end - start) {
