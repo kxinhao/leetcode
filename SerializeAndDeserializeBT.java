@@ -4,7 +4,7 @@
  * StringBuilder for serialization to String and Queue to store nodes for deserialization
  * in preorder traversal
  */
-// 3rd impl, rmb to add null or node value before split value
+// 4th impl, rmb to add null or node value before split value
 
 /**
  * Definition for a binary tree node.
@@ -44,7 +44,7 @@ public class Codec {
     }
 
     private TreeNode buildTree(Queue<String> nodes) {
-        String val = nodes.remove();
+        String val = nodes.poll();
         if (val.equals(NN)) return null;
         else {
             TreeNode node = new TreeNode(Integer.valueOf(val));
