@@ -13,7 +13,7 @@
  * ### Soln using TreeMap has addNum() TC: O(LogN) and findMedian() TC: O(1), SC: O(N)
  */
 
-// 2x Heap soln (Best runtime 85 ms)
+// 2x Heap soln (Best runtime 85 ms, additional addNum() conditions to shave 50ms off runtime)
 class MedianFinder {
 
     private PriorityQueue<Integer> min; // minHeap, stores larger half, size n/2+1 if odd input
@@ -25,19 +25,28 @@ class MedianFinder {
     }
     
     public void addNum(int num) {
+        // add to maxHeap(smaller half) if maxHeap is empty or num is smaller than largest element
         if(max.isEmpty()||num<max.peek()) max.add(num);
+        // if maxHeap is not empty or num larger than maxHeap top elem, add to minHeap (larger half)
         else {
             min.add(num);
         }
+        // balancing logic (keep heaps within +-1 of each other)
+        // if maxHeap larger than minHeap by more than 1, move from maxHeap to minHeap
         if(max.size()-min.size()>1) min.add(max.poll());
+        // if minHeap larger, move from minheap to maxHeap
         else if(min.size()-max.size()>1) {
             max.add(min.poll());
         }
     }
     
     public double findMedian() {
+        // for even sized input, take from min and max heap divided by 2
+        // division by double to prevent int overflow
         if(min.size() == max.size()) return (max.peek()/2.0+min.peek()/2.0);
+        // return from minHeap if it is larger
         else if(min.size()>max.size()) return min.peek();
+        // else return from maxHeap
         return max.peek();
     }
 }
