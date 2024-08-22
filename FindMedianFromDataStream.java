@@ -29,16 +29,12 @@ class MedianFinder {
         // add to maxHeap(smaller half) if maxHeap is empty or num is smaller than largest element
         if(max.isEmpty()||num<max.peek()) max.add(num);
         // if maxHeap is not empty or num larger than maxHeap top elem, add to minHeap (larger half)
-        else {
-            min.add(num);
-        }
+        else min.add(num);
         // balancing logic (keep heaps within +-1 of each other) (only called when heaps unbalanced)
         // if maxHeap larger than minHeap by more than 1, move from maxHeap to minHeap
         if(max.size()-min.size()>1) min.add(max.poll());
         // if minHeap larger, move from minheap to maxHeap
-        else if(min.size()-max.size()>1) {
-            max.add(min.poll());
-        }
+        else if(min.size()-max.size()>1) max.add(min.poll());
     }
     
     public double findMedian() {
@@ -48,7 +44,7 @@ class MedianFinder {
         // return from minHeap if it is larger
         else if(min.size()>max.size()) return min.peek();
         // else return from maxHeap
-        return max.peek();
+        else return max.peek();
     }
 }
 
