@@ -13,16 +13,16 @@
  * ### Soln using TreeMap has addNum() TC: O(LogN) and findMedian() TC: O(1), SC: O(N)
  */
 
-// 2nd impl
+// 3rd impl
 // 2x Heap soln (Best runtime 85 ms, additional addNum() conditions to shave 50ms off runtime)
 class MedianFinder {
 
-    private PriorityQueue<Integer> min; // minHeap, stores larger half, size n/2+1 if odd input
-    private PriorityQueue<Integer> max; // maxHeap, stores smaller half, size n/2
+    private PriorityQueue<Integer> min; // stores larger half with min val on top
+    private PriorityQueue<Integer> max; // stores smaller half with max val on top
 
     public MedianFinder() {
-        min = new PriorityQueue<>();
-        max = new PriorityQueue<>(Collections.reverseOrder());
+        min = new PriorityQueue<>(); // default behavior of PriorityQueue is minHeap
+        max = new PriorityQueue<>(Collections.reverseOrder()); // reversed is maxHeap
     }
     
     public void addNum(int num) {
