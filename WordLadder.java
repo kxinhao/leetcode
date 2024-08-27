@@ -8,13 +8,14 @@
  * simplified O(M^(N/2))
  * SC: O(N)
  * /
+// 2nd impl
 
 class Solution {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         if(!wordList.contains(endWord)) return 0;
         // HashSet operations take O(1) due to hashing
         Set<String> dict = new HashSet<>(wordList), startSet = new HashSet<>(),
-                    endSet = new HashSet<>(), visited = new HashSet<>();
+                    endSet = new HashSet<>();
         // init sets with start word and end word, initial addition of start word counts as 1
         // transformation so len starts at 1
         startSet.add(beginWord);
@@ -35,14 +36,12 @@ class Solution {
             Set<String> tmpSet = new HashSet<>();
             // go through each word in startSet(aka transformation list) and 
             // find valid words that are 1 char distance away from the
-            // start word taken from startSet and keep track of visited words in dict
             for(String word : startSet) {
                 char[] wordArr = word.toCharArray(); // O(N) where N=word.length()
                 for(int i = 0; i<wordArr.length; i++) {
                     // to swap the char in word under consideration
                     char tmpChar = wordArr[i];
                     for(char c = 'a'; c<='z'; c++) {
-                        
                         // swap in new char and form the String
                         wordArr[i] = c;
                         String target = new String(wordArr); // O(N) where N=wordArr.length
@@ -50,7 +49,6 @@ class Solution {
                         // we can return the number of changes needed + this round of iteration
                         if(endSet.contains(target)) return len+1;
                         // validity testing of the word formed before accepting addition
-                        // to transformed list
                         if(dict.contains(target)) {
                             tmpSet.add(target);
                             dict.remove(target);
@@ -61,6 +59,7 @@ class Solution {
                     wordArr[i] = tmpChar;
                 }
             }
+            // startSet is replaced with set of valid words found after current startSet is gone tru
             startSet = tmpSet;
             // increment len to account for current iteration of transformations
             len++;
