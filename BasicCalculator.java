@@ -1,11 +1,51 @@
 /**
  * LeetCode 224 Basic Calculator (Hard)
- * Soln using conversion to RPN and evaluate the RPN (46ms)
- * Soln with recursion TC: O(N), SC: O(N) (1ms)
+ * Soln using conversion to RPN and evaluate the RPN (46ms) (makes use of RPN eval concept, not optimal)
+ * Soln with recursion TC: O(N), SC: O(N) (1ms) (most optimal)
  * eg. (1+(4+5+2)-3)+(6+8)
+ * eg. -1+(4+5+2)-3+(6+8)
+ * Soln via Iteration (9ms)(most intuitive and easy to understand)
  */
 
-// recursion soln
+// iteration soln
+class Solution {
+    public int calculate(String s) {
+        Stack<Integer> stack = new Stack<Integer>();
+        int result = 0, number = 0, sign = 1;
+        for(int i = 0; i < s.length(); i++){
+            char c = s.charAt(i);
+            if(Character.isDigit(c)){
+                number = 10 * number + (c - '0');
+            }else if(c == '+'){
+                result += sign * number;
+                number = 0;
+                sign = 1;
+            }else if(c == '-'){
+                result += sign * number;
+                number = 0;
+                sign = -1;
+            }else if(c == '('){
+                //we push the result first, then sign;
+                stack.push(result);
+                stack.push(sign);
+                //reset the sign and result for the value in the parenthesis
+                sign = 1;   
+                result = 0;
+            }else if(c == ')'){
+                result += sign * number;  
+                number = 0;
+                result *= stack.pop();    //stack.pop() is the sign before the parenthesis
+                result += stack.pop();   //stack.pop() now is the result calculated before the parenthesis
+                
+            }
+        }
+    // accounts for last num formed at the end if not in parentheses
+    if(number != 0) result += sign * number;
+    return result;
+    }
+}
+
+// recursion soln (similar principle to iterative, just recursive and more optimal)
 class Solution {
     int ind;
     public int calculate(String s) {
@@ -15,18 +55,31 @@ class Solution {
     private int calc(String s) {
         int num = 0, ans = 0, sign = 1;
         while(ind<s.length()) {
+            // char at ind then increment ind(post assignment increment)
             char c = s.charAt(ind++);
+            // if char is a digit, form number from digit
+            // shifts prev digit left and adds new digit on right
             if(c>='0' && c<='9') num = num*10 + (c-'0');
+            // when open parentheses, recurse calc for inside equation
             else if(c=='(') {
                 num = calc(s);
-            } else if (c==')') {
+            }
+            // on closing parentheses, exit from recursion and add calc results to ans
+            // and convert to +ve or -ve value
+            else if (c==')') {
                 return ans += num*sign;
-            } else if(c=='+' || c=='-') {
+            }
+            // if + or - operators found, sum to ans the num found thus far with the signage
+            // previously set
+            // reset num to 0 for new digit calc
+            // if - operator, assign -1 to sign for next num formed to be subtracted
+            else if(c=='+' || c=='-') {
                 ans += num*sign;
                 num = 0;
                 sign = (c=='-') ? -1 : 1;
             }
         }
+        // for final number found, assign signage and sum with rest of ans
         ans += num*sign;
         return ans;
     }
