@@ -4,25 +4,26 @@
  * Soln with recursion TC: O(N), SC: O(N) (1ms) (most optimal)
  * eg. (1+(4+5+2)-3)+(6+8)
  * eg. -1+(4+5+2)-3+(6+8)
- * Soln via Iteration (9ms)(most intuitive and easy to understand)
+ * Soln via Iteration TC: O(N), SC: O(N) (9ms)(most intuitive and easy to understand, stack replaces recursion)
  */
 
 // iteration soln
+// 2nd impl
 class Solution {
     public int calculate(String s) {
         Stack<Integer> stack = new Stack<Integer>();
-        int result = 0, number = 0, sign = 1;
+        int result = 0, num = 0, sign = 1;
         for(int i = 0; i < s.length(); i++){
             char c = s.charAt(i);
             if(Character.isDigit(c)){
-                number = 10 * number + (c - '0');
+                num = 10 * num + (c - '0'); // decimal shift via *10 for digit len > 1
             }else if(c == '+'){
-                result += sign * number;
-                number = 0;
+                result += sign * num;
+                num = 0;
                 sign = 1;
             }else if(c == '-'){
-                result += sign * number;
-                number = 0;
+                result += sign * num;
+                num = 0;
                 sign = -1;
             }else if(c == '('){
                 //we push the result first, then sign;
@@ -32,18 +33,18 @@ class Solution {
                 sign = 1;   
                 result = 0;
             }else if(c == ')'){
-                result += sign * number;  
-                number = 0;
+                result += sign * num;  
+                num = 0;
                 result *= stack.pop();    //stack.pop() is the sign before the parenthesis
                 result += stack.pop();   //stack.pop() now is the result calculated before the parenthesis
-                
             }
         }
     // accounts for last num formed at the end if not in parentheses
-    if(number != 0) result += sign * number;
+    if(num != 0) result += sign * num;
     return result;
     }
 }
+// end iteration soln
 
 // recursion soln (similar principle to iterative, just recursive and more optimal)
 class Solution {
@@ -57,7 +58,7 @@ class Solution {
         while(ind<s.length()) {
             // char at ind then increment ind(post assignment increment)
             char c = s.charAt(ind++);
-            // if char is a digit, form number from digit
+            // if char is a digit, form num from digit
             // shifts prev digit left and adds new digit on right
             if(c>='0' && c<='9') num = num*10 + (c-'0');
             // when open parentheses, recurse calc for inside equation
@@ -79,11 +80,12 @@ class Solution {
                 sign = (c=='-') ? -1 : 1;
             }
         }
-        // for final number found, assign signage and sum with rest of ans
+        // for final num found, assign signage and sum with rest of ans
         ans += num*sign;
         return ans;
     }
 }
+// end recursion soln
 
 // RPN soln
 class Solution {
@@ -150,3 +152,4 @@ class Solution {
         return numStack.pop();
     }
 }
+// end RPN soln
