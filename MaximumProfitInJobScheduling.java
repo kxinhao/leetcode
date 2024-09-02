@@ -1,6 +1,8 @@
 /**
  * LeetCode 1235 Maximum Profit in Job Scheduling (Hard)
- * Dynamic Programing + Binary Search
+ * Sort by endTime + Dynamic Programing + Binary Search
+ * DP array stores best profit for each job under consideration after sorting by end time
+ * Binary search discovers non overlapping job with previously considered jobs
  * TC: O(N * logN)
  * SC: O(N)
  */
@@ -28,6 +30,7 @@ class Solution {
         
         Arrays.sort(jobs, (a, b) -> Integer.compare(a.end, b.end));
         
+        // Dynamic Programming to find best possible profit at last element of dp array
         int[] dp = new int[len];
         dp[0] = jobs[0].profit;
         
@@ -37,8 +40,9 @@ class Solution {
             int right = i - 1;
             int res = -1;
             
+            // Binary Search to find if no overlap on current job with mid job
             while (left <= right) {
-                int mid = left + ((right - left) >> 1);
+                int mid = left + ((right - left) >> 1); // >>1 == /2
                 if (jobs[mid].end <= start) {
                     res = mid;
                     left = mid + 1;
@@ -48,6 +52,7 @@ class Solution {
             }
             
             int take = jobs[i].profit;
+            // summation of profit with discovered overlapping job
             if (res != -1) {
                 take += dp[res];
             }
@@ -57,6 +62,7 @@ class Solution {
             dp[i] = Math.max(take, nottake);
         }
         
+        // return last element of dp array
         return dp[len - 1];
     }
 }
