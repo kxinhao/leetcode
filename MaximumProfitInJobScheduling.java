@@ -5,6 +5,7 @@
  * Binary search discovers non overlapping job with previously considered jobs
  * TC: O(N * logN)
  * SC: O(N)
+ * TODO: make comments more concise
  */
 
 class Solution {
@@ -54,6 +55,10 @@ class Solution {
                 int mid = left + ((right - left) >> 1); // >>1 == /2
                 // not returning mid value when jobs[mid].end = start as we are trying to find
                 // latest non overlapping job
+                // if the binary searched job ends before this job starts, we can sum the best
+                // profit tied to that job to this jobs profit. we store the ind for the best
+                // we store best profit in res and continue binary search to find any jobs
+                // which would end later but before this job starts
                 if (jobs[mid].end <= start) {
                     res = mid;
                     left = mid + 1;
