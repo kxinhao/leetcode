@@ -46,9 +46,7 @@ class Solution {
         // was under consideration
         for (int i = 1; i < len; i++) {
             int start = jobs[i].start;
-            int left = 0;
-            int right = i - 1;
-            int res = -1;
+            int left = 0, right = i - 1, res = -1;
             
             // Binary Search entire possible time period to find if no overlap with mid job
             while (left <= right) {
