@@ -1,6 +1,6 @@
 /**
  * LeetCode 1235 Maximum Profit in Job Scheduling (Hard)
- * Sort by endTime + Dynamic Programing + Binary Search
+ * Sort by endTime(O(NlogN) + Dynamic Programing + Binary Search (O(logN))
  * DP array stores best profit for each job under consideration after sorting by end time
  * Binary search discovers non overlapping job with previously considered jobs
  * TC: O(N * logN)
@@ -20,6 +20,8 @@ class Solution {
         }
     }
 
+    // O(NlogN) + O(N)*O(logN) (N is size of jobs array, Binary search for each member of array)
+    // O(2NlogN) = O(NlogN) simplified
     public int jobScheduling(int[] startTime, int[] endTime, int[] profit) {
         int len = profit.length;
             
@@ -34,15 +36,24 @@ class Solution {
         int[] dp = new int[len];
         dp[0] = jobs[0].profit;
         
+        // iteration through each job after jobs[0], decide to select the job or not
+        // if job[i] does not overlap with a prior job, only its own profit will be considered,
+        // else binary search will determine the last job that ends before this job starts and
+        // the stored profit of possible prior jobs in dp[] will be summed with this job profit
+        // The best profit possible will be compared between the selection of 
+        // this job(and prior non overlapping ones) vs the best profit possible when the prev job
+        // was under consideration
         for (int i = 1; i < len; i++) {
             int start = jobs[i].start;
             int left = 0;
             int right = i - 1;
             int res = -1;
             
-            // Binary Search to find if no overlap on current job with mid job
+            // Binary Search entire possible time period to find if no overlap with mid job
             while (left <= right) {
                 int mid = left + ((right - left) >> 1); // >>1 == /2
+                // not returning mid value when jobs[mid].end = start as we are trying to find
+                // latest non overlapping job
                 if (jobs[mid].end <= start) {
                     res = mid;
                     left = mid + 1;
@@ -52,7 +63,7 @@ class Solution {
             }
             
             int take = jobs[i].profit;
-            // summation of profit with discovered overlapping job
+            // summation of profit with best possible profit of latest non overlapping jobs
             if (res != -1) {
                 take += dp[res];
             }
