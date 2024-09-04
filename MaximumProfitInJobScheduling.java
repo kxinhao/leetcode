@@ -45,8 +45,7 @@ class Solution {
         // this job(and prior non overlapping ones) vs the best profit possible when the prev job
         // was under consideration
         for (int i = 1; i < len; i++) {
-            int start = jobs[i].start;
-            int left = 0, right = i - 1, res = -1;
+            int start = jobs[i].start, left = 0, right = i - 1, res = -1;
             
             // Binary Search entire possible time period to find if no overlap with mid job
             while (left <= right) {
@@ -67,9 +66,7 @@ class Solution {
             
             int take = jobs[i].profit;
             // summation of profit with best possible profit of latest non overlapping jobs
-            if (res != -1) {
-                take += dp[res];
-            }
+            if (res != -1) take += dp[res];
             
             int nottake = dp[i - 1];
             
