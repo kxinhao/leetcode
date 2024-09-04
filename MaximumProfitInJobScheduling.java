@@ -7,6 +7,7 @@
  * SC: O(N)
  * TODO: make comments more concise
  */
+// 3rd impl
 
 class Solution {
     class Job {
