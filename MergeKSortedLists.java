@@ -15,16 +15,17 @@
  */
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
-       if(lists==null||lists.length==0) return null; 
-       PriorityQueue<ListNode> queue = new PriorityQueue<ListNode>(lists.length, (a,b)->Integer.compare(a.val, b.val));
-       ListNode dummy = new ListNode(0);
-       ListNode tail = dummy;
-       for(ListNode node:lists) if(node!=null) queue.add(node);
-       while(!queue.isEmpty()) {
+        if(lists==null||lists.length==0) return null; 
+        // use custom comparator in PriorityQueue to sort each ListNode on add
+        PriorityQueue<ListNode> queue = new PriorityQueue<ListNode>(lists.length, (a,b)->Integer.compare(a.val, b.val));
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
+        for(ListNode node:lists) if(node!=null) queue.offer(node);
+        while(!queue.isEmpty()) {
             tail.next = queue.poll();
             tail = tail.next;
-            if(tail.next!=null) queue.add(tail.next);
-       }
-       return dummy.next;
+            if(tail.next!=null) queue.offer(tail.next);
+        }
+        return dummy.next;
     }
 }
