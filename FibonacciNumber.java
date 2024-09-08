@@ -1,5 +1,6 @@
 /**
  * LeetCode 509 Fibonacci Number (Easy)
+ * thought process: recursion first, optimize by exploring constraints
  * optimal soln is memoization, optimize further by using defined constraints in qn
  */
 
