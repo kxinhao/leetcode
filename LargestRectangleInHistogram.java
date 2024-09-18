@@ -2,10 +2,10 @@
  * LeetCode 84 Largest Rectangle in Histogram (Hard)
  * As rectangle can only be formed when the adjacent blocks are >= current block, we need to first find
  * the previous and next smallest blocks from the current
- * use stack to track
+ * use monotonic stack to track
  */
 
-// nonstack soln
+// non-decreasing>= monotonic stack soln TC: O(N) 8ms, SC: O(N) 56.4MB
 class Solution {
     public int largestRectangleArea(int[] heights) {
         if (heights == null || heights.length == 0) {
@@ -26,7 +26,7 @@ class Solution {
     }
 }
 
-// stack soln
+// stack soln TC: O(N) 69ms, SC: O(N) 57.2MB
 class Solution {
     public int largestRectangleArea(int[] heights) {
         int len = heights.length;
