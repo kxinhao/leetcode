@@ -5,7 +5,7 @@
  * use monotonic stack to track
  */
 
-// strictly increasing monotonic stack soln TC: O(N) 8ms, SC: O(N) 56.4MB
+// strictly increasing monotonic stack soln TC: O(N) 63ms, SC: O(N) 57.8MB
 class Solution {
     public int largestRectangleArea(int[] heights) {
         if (heights == null || heights.length == 0) {
@@ -49,7 +49,7 @@ class Solution {
     }
 }
 
-// non-stack soln
+// non-stack soln TC: O(N) 8ms, SC: O(N) 57.6MB
 class Solution {
     public static int largestRectangleArea(int[] height) {
         if (height == null || height.length == 0) {
