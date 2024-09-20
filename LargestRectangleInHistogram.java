@@ -8,24 +8,28 @@
  */
 
 // strictly increasing monotonic stack soln TC: O(N) 63ms, SC: O(N) 57.8MB
+// [2,1,5,6,2,3]
 class Solution {
     public int largestRectangleArea(int[] heights) {
         if (heights == null || heights.length == 0) {
             return 0;
         }
         Stack<Integer> stack = new Stack<Integer>();
-        int ans = 0;
+        int largestArea = 0;
+        // goes to = heights.length as first iteration is pushing of first index to stack, 
+        // actual operation happens on next iteration
         for (int i = 0; i <= heights.length; i++) {
-            int cur = (i == heights.length) ? -1 : heights[i];
-            // strictly increasing as equal values are popped
-            while (!stack.isEmpty() && heights[stack.peek()] >= cur) {
+            // index at heights.length bounded by -1 value
+            int curr = (i == heights.length) ? -1 : heights[i];
+            // strictly increasing as >= values are popped
+            while (!stack.isEmpty() && heights[stack.peek()] >= curr) {
                 int h = heights[stack.pop()];
                 int w = stack.isEmpty() ? i : i - stack.peek() - 1;
-                ans = Math.max(ans, h * w);
+                largestArea = Math.max(largestArea, h * w);
             } 
             stack.push(i);
         }
-        return ans;
+        return largestArea;
     }
 }
 
