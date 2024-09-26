@@ -7,6 +7,34 @@
  *          - decreasing monotonic stack finds next/prev larger value
  */
 
+// monotonic stack ans, single pass calc of nextSmaller and prevSmaller values
+class Solution {
+    public int largestRectangleArea(int[] heights) {
+        int maxArea = 0;
+        int[] nextSmaller = new int[heights.length];
+        int[] prevSmaller = new int[heights.length];
+        Arrays.fill(nextSmaller, heights.length);
+        Arrays.fill(prevSmaller, -1);
+        Stack<Integer> stack = new Stack<Integer>();
+        for(int i=0; i<heights.length; i++) {
+            while(!stack.isEmpty() && heights[stack.peek()]>heights[i]) {
+                int stackTop = stack.pop();
+                nextSmaller[stackTop] = i;
+            }
+            if(!stack.isEmpty()) prevSmaller[i] = stack.peek();
+            stack.push(i);
+        }
+
+        for(int i = 0; i<heights.length; i++) {
+            int currHeight = heights[i];
+            int width = nextSmaller[i] - prevSmaller[i] -1;
+            maxArea = Math.max(maxArea, currHeight*width);
+        }
+        return maxArea;
+    }
+}
+
+// find next smaller block, use strictly increasing monotonic stack
 // strictly increasing monotonic stack soln TC: O(N) 63ms, SC: O(N) 57.8MB
 // [2,1,5,6,2,3]
 class Solution {
@@ -21,6 +49,7 @@ class Solution {
         for (int i = 0; i <= heights.length; i++) {
             // index at heights.length bounded by -1 value
             int curr = (i == heights.length) ? -1 : heights[i];
+            // popping condition
             // strictly increasing as >= values are popped
             while (!stack.isEmpty() && heights[stack.peek()] >= curr) {
                 int h = heights[stack.pop()];
@@ -33,26 +62,23 @@ class Solution {
     }
 }
 
-// stack soln TC: O(N) 69ms, SC: O(N) 57.2MB
-class Solution {
-    public int largestRectangleArea(int[] heights) {
-        int len = heights.length;
-        int maxArea = 0;
-        Stack<Integer> stack = new Stack<>();
-        for (int i = 0; i <= len;) {
-            int h = (i == len ? 0 : heights[i]);
-            if (stack.isEmpty() || h >= heights[stack.peek()]) {
-                stack.push(i);
-                i++;
-            }else {
-                int curHeight = heights[stack.pop()];
-                int rightBoundary = i - 1;
-                int leftBoundary = stack.isEmpty() ? 0 : stack.peek() + 1;
-                int width = rightBoundary - leftBoundary + 1;
-                maxArea = Math.max(maxArea, (curHeight * width));
+// shortened array as stack soln TC: O(N) 7ms
+public class Solution {
+    public int largestRectangleArea(int[] h) {
+        int n = h.length;
+        int max = 0;
+        int[] stack = new int[n + 1];
+        int ind = -1;
+        for (int i = 0; i <= n; i++) {
+            int height = (i == n) ? 0 : h[i];
+            while (ind != -1 && height < h[stack[ind]]) {
+                int hh = h[stack[ind--]];
+                int width = (ind== -1) ? i : i - 1 - stack[ind];
+                max = Math.max(max, hh * width);
             }
+            stack[++ind] = i;
         }
-        return maxArea;
+        return max;
     }
 }
 
