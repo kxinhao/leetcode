@@ -3,11 +3,17 @@
  * Naive soln is O(N^2), loop through array for each element to find next or prev smaller block
  * use monotonic stack to track for O(N) soln
  * **Note** increasing/decreasing monotonic stack refers to order of stack from bottom up
- *          - increasing monotonic stack finds next/prev smaller value
- *          - decreasing monotonic stack finds next/prev larger value
+ *          - increasing monotonic stack is from small to large
+ *              + next smaller assigns val in while loop, while stackTop > curr
+ *              + prev smaller assigns val outside while loop, while stackTop >= curr
+ *          - decreasing monotonic stack is from large to small
+ *              + next greater assigns val in while loop, while stackTop < curr
+ *              + prev greater assings val outside while loop, while stackTop <= curr
  */
 
 // monotonic stack ans, single pass calc of nextSmaller and prevSmaller values
+// TC: O(N) 57ms(79%), SC: O(N) 56.12MB(96%)
+// 2nd impl
 class Solution {
     public int largestRectangleArea(int[] heights) {
         int maxArea = 0;
@@ -64,15 +70,15 @@ class Solution {
 
 // shortened array as stack soln TC: O(N) 7ms
 public class Solution {
-    public int largestRectangleArea(int[] h) {
-        int n = h.length;
+    public int largestRectangleArea(int[] heights) {
+        int n = heights.length;
         int max = 0;
         int[] stack = new int[n + 1];
         int ind = -1;
         for (int i = 0; i <= n; i++) {
             int height = (i == n) ? 0 : h[i];
-            while (ind != -1 && height < h[stack[ind]]) {
-                int hh = h[stack[ind--]];
+            while (ind != -1 && height < heights[stack[ind]]) {
+                int hh = heights[stack[ind--]];
                 int width = (ind== -1) ? i : i - 1 - stack[ind];
                 max = Math.max(max, hh * width);
             }
