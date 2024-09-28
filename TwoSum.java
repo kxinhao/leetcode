@@ -1,3 +1,8 @@
+/*
+ * LeetCode 1 Two Sum (Easy)
+ *
+ */
+
 // 3rd soln, use map to store int value and their occurance index, then subtract current from target to check map containsKey
 // rmb to init array with values by new int[]{values};
 class Solution {
