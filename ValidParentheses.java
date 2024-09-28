@@ -1,4 +1,10 @@
-//  2nd impl, using stack data struct class and push in compl parentheses
+/*
+ * LeetCode 20 Valid Parentheses (Easy)
+ * Stack Soln, using stack data struct class and push in compl parentheses
+ * check stack empty for empty string/non complement char
+ */
+
+//  3rd impl
 class Solution {
     public boolean isValid(String s) {
         Stack<Character> stack = new Stack<Character>();
