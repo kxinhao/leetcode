@@ -14,18 +14,19 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+
 class Solution {
   public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
     // input mutational, iterative method
-    if(list1 == null || list2 == null) return list1 == null ? list2 : list1;
-    if(list1.value>list2.value) {
+/*    if(list1 == null || list2 == null) return list1 == null ? list2 : list1;
+    if(list1.val>list2.val) {
       ListNode tmp = list1;
       list1 = list2;
       list2 = tmp;
     }
     ListNode head = list1;
     while(list1.next!=null && list2!=null) {
-      if(list1.next.value<list2.value) {
+      if(list1.next.val<list2.val) {
         list1 = list1.next;
       } else {
         ListNode tmp = list2.next;
@@ -37,7 +38,10 @@ class Solution {
     list1.next = list1.next == null ? list2 : list1.next;
     return head;
   }
-        /* Recursion method
+  */
+
+    // Recursion method, makes more sense for interview
+    // 2nd impl
         // terminal conditions
         if(list1 == null) return list2;
         if(list2 == null) return list1;
@@ -49,9 +53,10 @@ class Solution {
             list2.next = mergeTwoLists(list1, list2.next);
             return list2;
         }
-        */
+    }
+        
       // Iterative method
-        /*
+      /*
         if(list1 == null || list2 == null) return list1 == null ? list2 : list1;
         ListNode ans = new ListNode(0);
         ListNode curr = ans;
@@ -67,5 +72,5 @@ class Solution {
         }
         curr.next = (list1 == null ? list2 : list1);
         return ans.next;
-        */
+      */
 }

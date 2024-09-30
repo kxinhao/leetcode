@@ -1,6 +1,8 @@
 /**
  * LeetCode 125 Valid Palindrome (Easy)
+ * 2 pointer soln
  */
+// 2nd impl
 // using dual pointers converging, time compl O(N), space compl O(1)
 class Solution {
     public boolean isPalindrome(String s) {

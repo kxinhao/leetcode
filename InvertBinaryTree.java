@@ -1,3 +1,9 @@
+/*
+ * LeetCode 226 Invert Binary Tree (Easy)
+ * DFS recursion
+ */
+// 2nd impl
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -15,7 +21,7 @@
  */
 class Solution {
     public TreeNode invertTree(TreeNode root) {
-        if(root == null) return root;
+        if(root == null||(root.left==null && root.right==null)) return root;
         invertTree(root.left);
         invertTree(root.right);
         TreeNode tmp = root.left;
