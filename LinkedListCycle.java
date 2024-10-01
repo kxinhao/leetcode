@@ -1,3 +1,10 @@
+/*
+ * LeetCode 141 LinkedList Cycle (Easy)
+ * TC: O(N), SC: O(1)
+ * 2 Pointer Soln
+ *
+ */
+
 /**
  * Definition for singly-linked list.
  * class ListNode {
@@ -9,6 +16,8 @@
  *     }
  * }
  */
+
+// 2nd impl
 public class Solution {
     // dual pointer travelling at 2x speed to loop and meet if cycle is present
     public boolean hasCycle(ListNode head) {
