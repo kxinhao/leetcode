@@ -2,6 +2,7 @@
  * LeetCode 20 Valid Parentheses (Easy)
  * Stack Soln, using stack data struct class and push in compl parentheses
  * check stack empty for empty string/non complement char
+ * TC: O(N), SC: O(N)
  */
 
 //  3rd impl

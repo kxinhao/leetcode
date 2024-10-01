@@ -1,6 +1,6 @@
 /*
  * LeetCode 1 Two Sum (Easy)
- *
+ * TC: O(N), SC: O(N)
  */
 
 // 4th soln, use map to store int value and their occurance index, then subtract current from target to check map containsKey

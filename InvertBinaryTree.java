@@ -1,6 +1,7 @@
 /*
  * LeetCode 226 Invert Binary Tree (Easy)
  * DFS recursion
+ * TC: O(N), SC: O(N)
  */
 // 3rd impl
 

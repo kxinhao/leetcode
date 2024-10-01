@@ -1,9 +1,10 @@
 /**
  * LeetCode 125 Valid Palindrome (Easy)
  * 2 pointer soln
+ * TC: O(N), SC: O(1)
  */
 // 2nd impl
-// using dual pointers converging, time compl O(N), space compl O(1)
+// using dual pointers converging
 class Solution {
     public boolean isPalindrome(String s) {
         int lInd = 0, rInd = s.length()-1;

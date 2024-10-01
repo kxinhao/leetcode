@@ -1,7 +1,7 @@
 /*
  * LeetCode 121 Best Time to Buy and Sell Stock (Easy)
- *  Dynamic Programming tracking buy, sell and profit amounts (simplified to buy and profit amt)
- *
+ * Dynamic Programming tracking buy, sell and profit amounts (simplified to buy and profit amt)
+ * TC: O(N), SC: O(1)
  */
 // 2nd impl
 

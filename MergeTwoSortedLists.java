@@ -1,5 +1,6 @@
 /**
  * LeetCode 21 Merge Two Sorted Lists (Easy)
+ * TC: O(N+M), SC: O(1)
  */
 // 7th impl, using actual splicing of lists
 // rmb to return next of ans node, 1st node is empty due to initialization
