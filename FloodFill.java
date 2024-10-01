@@ -1,7 +1,7 @@
 /**
  * LeetCode 733 Flood Fill (Easy)
  * DFS recursion fill
- * TC: O(M+N), SC:O(1)
+ * TC: O(MN), SC:O(MN)
  */
 // 3rd impl
 
