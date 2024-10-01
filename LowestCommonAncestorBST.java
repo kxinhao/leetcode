@@ -1,7 +1,8 @@
 /**
  * LeetCode 235 Lowest Common Ancestor of a BST (Medium)
  */
-// 1st impl with recursion
+// 2nd impl with recursion
+// TC: O(LogN), SC: O(N)
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
