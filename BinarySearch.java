@@ -1,7 +1,7 @@
 /**
  * LeetCode 704 Binary Search (Easy)
  */
-// 2nd impl
+// 3rd impl
 // (O)log n assuming sorted array
 // checks middle values of array against target, if lower than check right, if higher check left
 // if m != target, new bounds excludes m (lower assigns new lo to m+1, higher assigns hi to m)

@@ -2,7 +2,7 @@
  * LeetCode 226 Invert Binary Tree (Easy)
  * DFS recursion
  */
-// 2nd impl
+// 3rd impl
 
 /**
  * Definition for a binary tree node.
