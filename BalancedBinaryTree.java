@@ -1,6 +1,6 @@
 /**
  * LeetCode 110 Balanced Binary Tree (Easy)
- *
+ * TC: O(N), SC: O(1)
  */
 /**
  * Definition for a binary tree node.
@@ -28,10 +28,7 @@ class Solution {
         if(root == null) return 0;
         int l = maxDepth(root.left);
         int r = maxDepth(root.right);
-        if(l==-1||r==-1) return -1;
-        if(Math.abs(l-r) > 1) {
-            return -1;
-        }
+        if(l==-1||r==-1||Math.abs(l-r)>1) return -1;
         return Math.max(l, r) + 1;
     }
 }
