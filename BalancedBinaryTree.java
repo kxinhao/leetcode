@@ -1,5 +1,6 @@
 /**
  * LeetCode 110 Balanced Binary Tree (Easy)
+ *
  */
 /**
  * Definition for a binary tree node.
@@ -16,7 +17,27 @@
  *     }
  * }
  */
-// 2nd impl: goes all the way to deepest node and calculates difference in height with sibling
+// 3rd impl: goes all the way to deepest node and calculates difference in height with sibling
+
+// no global var
+class Solution {
+    public boolean isBalanced(TreeNode root) {
+        return maxDepth(root)!=-1;
+    }
+    private int maxDepth(TreeNode root) {
+        if(root == null) return 0;
+        int l = maxDepth(root.left);
+        if(l==-1) return -1;
+        int r = maxDepth(root.right);
+        if(r==-1) return -1;
+        if(Math.abs(l-r) > 1) {
+            return -1;
+        }
+        return Math.max(l, r) + 1;
+    }
+}
+
+/* using global var
 class Solution {
     private boolean result = true;
     public boolean isBalanced(TreeNode root) {
@@ -34,3 +55,4 @@ class Solution {
         return 1 + Math.max(l,r);
     }
 }
+*/
