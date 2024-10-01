@@ -1,5 +1,6 @@
 /**
  * LeetCode 242 Valid Anagram (Easy)
+ * TC: O(3N), SC: O(N+M)
  */
 // 5th impl, init alphabet occurence array for both strings 
 // and increment on each ascii char ind appearance
