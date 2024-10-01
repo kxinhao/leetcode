@@ -1,3 +1,9 @@
+/*
+ * LeetCode 232 Implement Queue using Stacks (Easy)
+ * implement fifo with lifo
+ * TC: O(N), SC: O(N)
+ */
+
 // 2nd impl, using only push/pop/size/isEmpty of stack type data structures
 class MyQueue {
 
@@ -19,6 +25,7 @@ class MyQueue {
     }
     
     public int peek() {
+        // transfer from in to out only when out is empty
         if(output.empty())
             while(!input.empty())
                 output.push(input.pop());
