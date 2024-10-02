@@ -4,7 +4,7 @@
  * TC: O(N), SC: O(N)
  */
 
-// 2nd impl, using only push/pop/size/isEmpty of stack type data structures
+// 3rd impl, using only push/pop/size/isEmpty of stack type data structures
 class MyQueue {
 
     Stack<Integer> input = new Stack();

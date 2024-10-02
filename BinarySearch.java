@@ -12,7 +12,7 @@ class Solution {
     public int search(int[] nums, int target) {
         int l = 0, r = nums.length-1;
         while(l<=r){ // for when 2 element in boundary 
-            int mid = l+(r-l)/2; // or (l+r)/2
+            int mid = l+(r-l)/2; // prevents int overflow
             if(nums[mid]==target) return mid;
             else if(nums[mid]>target) r = mid-1;
             else l = mid +1;
