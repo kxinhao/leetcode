@@ -1,3 +1,10 @@
+/*
+ * LeetCode 169 Majority Element (Easy)
+ * Boyer-Moore Majority Vote Algo
+ * TC: O(N), SC: O(1)
+ */
+
+// 2nd impl
 // Boyer-Moore Majority Vote Algorithm (single pass version); linear TC O(n), constant SC O(1)
 // sort and get middle element; logarithmic TC O(nlogn), constant SC O(1)
 // hashmap population; linear TC O(n), linear SC O(n)
