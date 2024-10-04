@@ -1,7 +1,10 @@
 /**
  * LeetCode 67 Add Binary (Easy)
+ * TC: O(N) where N is longer string length of a/b
+ * SC: O(N) which is size of StringBuilder
  */
 
+// 2nd impl
 class Solution {
     public String addBinary(String a, String b) {
         // a = 1010, b = 1011, expected ans = 10101
