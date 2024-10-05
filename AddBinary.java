@@ -1,5 +1,6 @@
 /**
  * LeetCode 67 Add Binary (Easy)
+ * 2 solns, 1. addition/appending of bitvalue, 2. bitwise operations
  * TC: O(N) where N is longer string length of a/b
  * SC: O(N) which is size of StringBuilder
  */
@@ -26,5 +27,22 @@ class Solution {
         if(carry!=0) sb.append(carry); // 10101
         // reverse sb to get left to right representation of binary
         return sb.reverse().toString();
+    }
+}
+
+// Pure bitwise operations, no appending to StringBuffer to form answer.
+// rmb to import BigInteger for LeetCode style if run is req
+// TC: O(N), SC: O(N)
+import java.math.BigInteger;
+class Solution {
+    public String addBinary(String a, String b) {
+        BigInteger bigA = new BigInteger(a,2), bigB = new BigInteger(b,2);
+        while(bigB.bitCount()!=0) {
+            BigInteger noCarry = bigA.xor(bigB);
+            BigInteger carry = bigA.and(bigB).shiftLeft(1);
+            bigA = noCarry;
+            bigB = carry;
+        }
+        return bigA.toString(2);
     }
 }
