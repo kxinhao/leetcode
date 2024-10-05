@@ -1,3 +1,9 @@
+/*
+ * LeetCode 543 Diameter of Binary Tree (Easy)
+ *
+ */
+
+// Diameter = max travelable distance of node's subtrees
 // soln: for each node, count left + right heights and replace largest total if larger
 // Hint: Balanced Binary Tree derivation
 /**
@@ -22,11 +28,10 @@ class Solution {
        return result;
     }
     public int getDiameter(TreeNode root) {
-        if(root==null) return 1;
+        if(root==null) return 0;
         int l = getDiameter(root.left);
         int r = getDiameter(root.right);
-        int dia = l+r;
-        if(result<dia) result = dia;
+        result = Math.max(result, l+r);
         return 1+ Math.max(l,r);
     }
 }
