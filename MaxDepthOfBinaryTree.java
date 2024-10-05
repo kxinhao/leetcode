@@ -1,6 +1,9 @@
 /**
  * LeetCode 104 Maximum Depth of Binary Tree (Easy)
+ * TC: O(N), SC: O(1)
  */
+
+// 2nd impl
 
 /**
  * Definition for a binary tree node.

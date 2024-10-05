@@ -2,6 +2,7 @@
  * LeetCode 110 Balanced Binary Tree (Easy)
  * TC: O(N), SC: O(1)
  */
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {

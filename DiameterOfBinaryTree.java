@@ -5,7 +5,7 @@
 
 // Diameter = max travelable distance of node's subtrees
 // soln: for each node, count left + right heights and replace largest total if larger
-// Hint: Balanced Binary Tree derivation
+// Hint: Balanced Binary Tree (110) && Max Depth of Binary Tree (104)
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
