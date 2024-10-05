@@ -1,6 +1,6 @@
 /*
  * LeetCode 543 Diameter of Binary Tree (Easy)
- *
+ * TC: O(N), SC: O(1)
  */
 
 // Diameter = max travelable distance of node's subtrees
@@ -31,7 +31,9 @@ class Solution {
         if(root==null) return 0;
         int l = getDiameter(root.left);
         int r = getDiameter(root.right);
+        // total path travelable from this node's subtrees
         result = Math.max(result, l+r);
+        // return the longest path to this node + 1
         return 1+ Math.max(l,r);
     }
 }
