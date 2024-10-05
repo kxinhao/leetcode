@@ -21,6 +21,7 @@
  *     }
  * }
  */
+// 2nd impl
 class Solution {
     int result = 0;
     public int diameterOfBinaryTree(TreeNode root) {
