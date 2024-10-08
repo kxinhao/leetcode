@@ -1,6 +1,6 @@
 /**
  * LeetCode 53 Maximum Subarray (Medium)
- * Sliding Window single pass soln
+ * Sliding Window single pass dp soln, dp array stores larges subarray sum to date
  * TC: O(N), SC: O(N)
  */
 
