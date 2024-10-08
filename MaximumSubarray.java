@@ -1,8 +1,10 @@
 /**
  * LeetCode 53 Maximum Subarray (Medium)
+ * Sliding Window single pass soln
+ * TC: O(N), SC: O(N)
  */
 
-// 5th soln using dp O(n) time complexity
+// 6th soln using dp O(n) time complexity
 // dp: single pass, using a negative result of previous element to reset window start to current index
 // brute force approach is O(n^3) time complexity
 class Solution {
