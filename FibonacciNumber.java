@@ -2,15 +2,18 @@
  * LeetCode 509 Fibonacci Number (Easy)
  * thought process: recursion first, optimize by exploring constraints
  * optimal soln is memoization, optimize further by using defined constraints in qn
+ * optimize further by using O(1) space
  */
 
 class Solution {
     public int fib(int n) {
-        int[] mem = new int[31];
-        for(int i=0;i<=n;i++) {
-            if(i<=1) mem[i] = i;
-            else mem[i] = mem[i-1]+mem[i-2];
+        if(n<=1) return n;
+        int a = 0, b = 1;
+        for(int i=2; i<=n; i++) {
+            int sum = a+b;
+            a = b;
+            b = sum;
         }
-        return mem[n];
+        return sum;
     }
 }
