@@ -1,6 +1,7 @@
 /**
  * LeetCode 53 Maximum Subarray (Medium)
- * Sliding Window single pass dp soln, dp array stores larges subarray sum to date
+ * single pass dp soln, dp array stores larges subarray sum to date
+ * Kadane's algorithm
  * TC: O(N), SC: O(N)
  */
 
@@ -33,4 +34,15 @@ class Solution {
         }
         return largestSum;
     }
+    // Kadane's algorithm
+/*
+    public int maxSubArray(int[] nums) {
+        int max = nums[0], maxEndHere = nums[0];
+        for(int i = 1; i<nums.length; i++) {
+            maxEndHere = Math.max(maxEndHere+nums[i], nums[i]);
+            max = Math.max(maxEndHere, max);
+        }
+        return max;
+    }
+*/
 }
