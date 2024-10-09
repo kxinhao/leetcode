@@ -5,6 +5,7 @@
  * SC: O(1)
  */
 
+// 2nd impl
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -44,8 +45,8 @@ class Solution {
             }
         }
     }
-// node reconnection instead of value swap, same TC, SC
-    /*
+// node reconnection instead of value swap, same TC: O(H), SC: O(1)
+/*
     public TreeNode deleteNode(TreeNode root, int key) {
         if(root == null) return root;
         if(root.val < key) root.right = deleteNode(root.right, key);
@@ -71,5 +72,5 @@ class Solution {
         }
         return root;
     }
-    */
+*/
 }
