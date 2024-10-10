@@ -3,7 +3,7 @@
  * 3 cases to account for, pre intersect of newInterval, post intersect and intersecting intervals
  * ##brute force impl, failed at non overlap new interval test
  * 2nd try ans derived from solutions, using arraylist and single pass index tracking operations
- * 2nd soln with input mutation
+ * 3rd soln with input mutation
  */
 class Solution {
     public int[][] insert(int[][] intervals, int[] newInterval) {
