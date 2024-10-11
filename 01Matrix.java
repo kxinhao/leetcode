@@ -2,8 +2,9 @@
  * LeetCode 542 01 Matrix (Medium)
  * using private int[] class/array to store coords 
  * bfs from each 0 value coord to populate matrix with distance values
+ * TC: O(N^2), SC: O(N)
  */
-// 3rd impl
+// 4th impl
 // eg [[0,0,0],[0,1,0],[1,1,1]]
 class Solution {
     // store right/left/up/down directions in 2d array for traversal

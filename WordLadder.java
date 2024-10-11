@@ -1,4 +1,4 @@
-/**
+/*
  * LeetCode 127 Word Ladder (Hard)
  * Double ended BFS (forward and reverse search, ends when both ends meet)
  * cost of exploring each layer increases exponentially, so 2 half depth BFS is superior

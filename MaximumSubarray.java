@@ -5,10 +5,11 @@
  * TC: O(N), SC: O(N)
  */
 
-// 6th soln using dp O(n) time complexity
+// 6th impl using dp O(n) time complexity
 // dp: single pass, using a negative result of previous element to reset window start to current index
 // brute force approach is O(n^3) time complexity
 class Solution {
+    /*
     public int maxSubArray(int[] nums) {
         // [-2,1,-3,4,-1,2,1,-5,4]
         int largestSum = nums[0]; 
@@ -34,8 +35,9 @@ class Solution {
         }
         return largestSum;
     }
-    // Kadane's algorithm
-/*
+    */
+    // Kadane's algorithm TC: O(N), SC: O(1)
+    // 3rd impl
     public int maxSubArray(int[] nums) {
         int max = nums[0], maxEndHere = nums[0];
         for(int i = 1; i<nums.length; i++) {
@@ -44,5 +46,4 @@ class Solution {
         }
         return max;
     }
-*/
 }

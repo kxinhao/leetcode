@@ -4,7 +4,7 @@
  * ##brute force impl, failed at non overlap new interval test
  */
 
-// 4th soln
+// 5th soln
 class Solution {
     public int[][] insert(int[][] intervals, int[] newInterval) {
         List<int[]> ans = new ArrayList<>();
