@@ -6,7 +6,7 @@
  * TC: O(NLogK), SC: O(K)
  */
 
-// 2nd impl
+// 3rd impl
 class Solution {
   public int[][] kClosest(int[][] points, int k) {
     // simplified euclidean distance comparison, skipping sqrt
@@ -15,9 +15,7 @@ class Solution {
       pq.offer(p);
       if(pq.size()>k) pq.poll();
     }
-    int[][]ans = new int[k][2];
-    while(k>0) ans[--k] = pq.poll();
-    return ans;
+    return pq.toArray(new int[k][2]);
   }
 }
 
