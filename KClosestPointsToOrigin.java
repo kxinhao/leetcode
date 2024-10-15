@@ -6,7 +6,7 @@
  * TC: O(NLogK), SC: O(K)
  */
 
-// 3rd impl
+// 4th impl
 class Solution {
   public int[][] kClosest(int[][] points, int k) {
     // simplified euclidean distance comparison, skipping sqrt

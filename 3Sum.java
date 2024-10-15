@@ -2,14 +2,16 @@
  * LeetCode 15 3Sum (Medium)
  * sort input array, then select non-duplicate element and use 2 pointer l + r to find triplet
  */
-// 3rd impl
+
+// 4th impl
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        // sort input array
+        // sort input array O(logN)
         Arrays.sort(nums);
         List<List<Integer>> ans = new ArrayList<>();
         if(nums[0]>0) return ans;
-        // end nums.length-2 as we will have additional 2 pointers l + r to account for
+        // i is value under consideration, other 2 values l & r will be based off this
+        // end nums.length-2 as l will be i+1
         for(int i = 0; i<nums.length-2; i++) {
             // skip if duplicate elem found
             if(i>0 && nums[i] == nums[i-1]) continue;
