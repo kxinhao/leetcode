@@ -1,8 +1,12 @@
 /**
  * LeetCode 102 Binary Tree Level Order Traversal (Medium)
- * use ans.size to track level based on prev level added lists, root starts at 0 
- * element addition occurs after ans.size/level check but before traversal left/right
+ * DFS, uses answer list size to track levels that node values are added to
+ * TC: O(N), SC: O(N)
+ * BFS, uses null nodes in queue to track different levels
+ * TC: O(N), SC: O(N)
  */
+
+// DFS
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> ans = new ArrayList<>();
@@ -23,4 +27,38 @@ class Solution {
         levelTraverse(ans, curr.left, level+1);
         levelTraverse(ans, curr.right, level+1);
     }
+}
+
+// BFS
+class Solution {
+	public List<List<Integer>> levelOrder(TreeNode root) {
+		List<List<Integer>> ans = new ArrayList<List<Integer>>();
+		List<Integer> currLevel = new ArrayList<Integer>();
+		Queue<TreeNode> queue =  new LinkedList<TreeNode>();
+		if(root != null) {
+			queue.offer(root);
+            // null acts as level separator in queue
+			queue.offer(null);
+		}
+		while(!queue.isEmpty()) {
+			TreeNode curr = queue.poll();
+			if(curr != null) {
+				currLevel.add(curr.val);
+				if(curr.left != null) {
+					queue.offer(curr.left);
+				} 
+				if(curr.right != null) {
+					queue.offer(curr.right);
+				}
+			}
+			else {
+				ans.add(currLevel);
+				if(!queue.isEmpty()) {
+					currLevel = new ArrayList<Integer>();
+					queue.offer(null);
+				}
+			}
+		}
+		return ans;
+	}
 }
