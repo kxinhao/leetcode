@@ -1,23 +1,21 @@
 /**
  * LeetCode 133 Clone Graph (Medium)
- *
+ * TC: O(N+E), SC: O(N+E) Node + Edges
  */
 
+// 2nd impl
 class Solution {
     public Node cloneGraph(Node node) {
-        // map acts as seen node tracker
-        public HashMap<Integer, Node> map = new HashMap<>();
-        public Node cloneGraph(Node node) {
-            if(node==null) return null;
-            // returns node if seen, else add to map and explore new node's neighbors
-            if(map.contains(node.val)) return map.get(node.val);
-            Node newNode = new Node(node.val, new ArrayList<Node>());
-            map.put(node.val, newNode);
-            // recursively call cloneGraph to add unseen nodes to neighbor list
-            // clone neighbor nodes via existing node's neighbor list and 
-            // add to new node neighbor list
-            for(Node nn : node.neighbors) newNode.neighbors.add(cloneGraph(nn));
-            return newNode;
-        }
+        HashMap<Integer, Node> map = new HashMap<>();
+        return dfs(node, map);
+    }
+    private Node dfs(Node node, HashMap<Integer,Node> map) {
+        if(node == null) return null;
+        // return node if seen, else add to visited map and explore neighbors
+        if(map.containsKey(node.val)) return map.get(node.val);
+        Node newNode = new Node(node.val);
+        map.put(node.val, newNode);
+        for(Node nn : node.neighbors) newNode.neighbors.add(dfs(nn, map));
+        return newNode;
     }
 }
