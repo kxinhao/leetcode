@@ -30,6 +30,7 @@ class Solution {
 }
 
 // BFS
+// 2nd impl
 class Solution {
 	public List<List<Integer>> levelOrder(TreeNode root) {
 		List<List<Integer>> ans = new ArrayList<List<Integer>>();
