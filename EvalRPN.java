@@ -4,7 +4,7 @@
  *
  */
 
-// 2nd impl
+// 3rd impl
 class Solution {
     public int evalRPN(String[] tokens) {
         // valid operands +, -, *, /
