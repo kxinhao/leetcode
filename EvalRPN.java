@@ -1,7 +1,10 @@
 /**
  * LeetCode 150 Evaluate Reverse Polish Notation (Medium)
+ * TC: O(N), SC: O(N)
  *
  */
+
+// 2nd impl
 class Solution {
     public int evalRPN(String[] tokens) {
         // valid operands +, -, *, /
@@ -12,7 +15,6 @@ class Solution {
         operands.add("/");
         // stack operations for order of operations, push digits pop operands
         Stack<Integer> rpnStack = new Stack<Integer>();
-        tokenloop:
         for(int i = 0; i<tokens.length; i++) {
             if(operands.contains(tokens[i])) {
                 int a = rpnStack.pop();
