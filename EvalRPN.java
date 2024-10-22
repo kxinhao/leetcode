@@ -4,15 +4,11 @@
  *
  */
 
-// 3rd impl
+// 4th impl
 class Solution {
     public int evalRPN(String[] tokens) {
         // valid operands +, -, *, /
-        List<String> operands = new ArrayList<String>();
-        operands.add("+");
-        operands.add("-");
-        operands.add("*");
-        operands.add("/");
+        List<String> operands = Arrays.asList("+","-","*","/");
         // stack operations for order of operations, push digits pop operands
         Stack<Integer> rpnStack = new Stack<Integer>();
         for(int i = 0; i<tokens.length; i++) {
