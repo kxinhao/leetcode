@@ -6,7 +6,7 @@
  * recursion called on child nodes and using parent as min when checking right child lesser than
  * and parent as max when checking left child larger than parent
  */
-// 2nd impl without Integer max/min check
+// 3rd impl without Integer max/min check
 
 /**
  * Definition for a binary tree node.

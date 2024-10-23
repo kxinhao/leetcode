@@ -1,8 +1,8 @@
 /**
  * LeetCode 155 Min Stack (Medium)
- * Implementation using modified Singly Linked List with min value and private head node
+ * Implementation using modified Singly Linked List with min value and nested Node class
  */
-// 1st impl runtime beat 100% (3ms)
+// 2nd impl runtime beat 100% (3ms)
 
 class MinStack {
     class StackNode {
