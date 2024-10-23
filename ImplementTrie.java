@@ -3,7 +3,7 @@
  * implement class TrieNode with array of alphabets representing possible children and boolean isWord
  * use character ascii value representation to match to array
  */
-// 1st impl
+// 2nd impl
 class Trie {
 
     class TrieNode {
