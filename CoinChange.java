@@ -6,23 +6,20 @@
  * TC: O(N*M) where N = amount and M = coins length
  * SC: O(N)
  */
-// 2nd impl
+// 3rd impl
 // eg. [1,2,5], 11
 
 class Solution {
     public int coinChange(int[] coins, int amount) {
         final int fillVal = 100000;
-
         int dp = new int[amount+1]; // +1 for zero indexing
         Arrays.fill(dp, fillVal); // fill dp array with unreachable val to indicate unseen/invalid
-
         dp[0] = 0;
 
         // calculating the no of coins needed for each amt value from 0 to amt 
         for(int sum = 1; sum<=amount; sum++) {
             // going through each coin in coin bag
             for(int coin : coins) {
-                // sum >= coin prevents overflowing desired amt from large coin value, 
                 // dp[sum-coin]!=fillVal checks that the sum less this coin value has been calculated
                 // take min of precalculated coins needed for sum vs (coins needed for sum-coin val)+1
                 // this replaces smaller denomination coins with larger denom, reducing coins needed
