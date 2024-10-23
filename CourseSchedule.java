@@ -6,7 +6,7 @@
  * and derivative course found, if 0 at the end, means schedule is possible
  */
 
-// 7th impl
+// 8th impl
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         List<Integer>[] inCourse = new List[numCourses];//array of courses list with ind as prereq
@@ -25,7 +25,7 @@ class Solution {
         }
         // add course to queue if no prerequisites (Kahn's algo)
         for(int i = 0; i<incomingEdges.length;i++) {
-            if(incomingEdges[i]==0) queue.add(i);
+            if(incomingEdges[i]==0) queue.offer(i);
         }
 
         // partial Kahn's algorithm (without sorted list of nodes)
