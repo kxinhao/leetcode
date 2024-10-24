@@ -5,7 +5,7 @@
  * eg. input: [1,2,3,4] output: [24,12,8,6] 
  */
 
-// 9th solution
+// 10th solution
 class Solution {
     public int[] productExceptSelf(int[] nums) {
         int[] ans = new int[nums.length];
