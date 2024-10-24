@@ -2,7 +2,7 @@
  * LeetCode 200 Number of Islands (Medium)
  * DFS soln derived from flood fill approach
  */
-// 1st impl
+// 2nd impl
 // DFS 3ms(85%) 49.1MB(74%)
 class Solution {
     public int numIslands(char[][] grid) {
