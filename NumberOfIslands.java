@@ -1,6 +1,8 @@
 /**
  * LeetCode 200 Number of Islands (Medium)
  * DFS soln derived from flood fill approach
+ * TC: O(N*M) where M*N is cells in grid as each cell is visited once
+ * SC: O(N*M) if visited matrix used else O(1) if mutating input
  */
 // 2nd impl
 // DFS 3ms(85%) 49.1MB(74%)
