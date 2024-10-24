@@ -6,7 +6,7 @@
  * TC: O(N*M) where N = amount and M = coins length
  * SC: O(N)
  */
-// 3rd impl
+// 4th impl
 // eg. [1,2,5], 11
 
 class Solution {

@@ -6,7 +6,7 @@
  * and derivative course found, if 0 at the end, means schedule is possible
  */
 
-// 8th impl
+// 9th impl
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         List<Integer>[] inCourse = new List[numCourses];//array of courses list with ind as prereq
