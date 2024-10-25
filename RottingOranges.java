@@ -6,54 +6,37 @@
  * x = 1d_Ind / grid[0].length
  * y = 1d_Ind % grid[0].length
  * alternative is to store matrix coords in queue, no diff in performance
- * Time Complexity: O(nm), Space Complexity: O(nm);
+ * TC: O(NM), SC: O(NM) worst case if all rotten will be added to queue
  */
-// 3rd impl, replace break when fresh==0 with return of time to improve performance
+// 4th impl
 
 class Solution {
-    private final int[][] dirs = {{1,0},{-1,0},{0,1},{0,-1}};
+    private final int[][] dirs = new int[][] {{1,0},{-1,0},{0,1},{0,-1}};
     public int orangesRotting(int[][] grid) {
-        if(grid == null || grid.length == 0) return -1;
-        int m = grid.length, n = grid[0].length, fresh = 0;
-        Queue<Integer> queue = new LinkedList<>();
-        for(int i = 0; i<m; i++) {
-            for(int j = 0; j<n; j++) {
-                // if rotting orange found, add the squashed 1d coords to queue
-                if(grid[i][j] == 2) queue.offer(i * n + j);
-                // if fresh orange found, increment fresh count
-                if(grid[i][j] == 1) fresh++;
+        int time = 0, fresh = 0;
+        Queue<int[]> queue = new ArrayDeque<>();
+        for(int i = 0; i<grid.length; i++) {
+            for(int j = 0; j<grid[0].length; j++) {
+                if(grid[i][j]==2) queue.offer(new int[] {i,j});
+                if(grid[i][j]==1) fresh++;
             }
         }
-        int time = 0;
-        while(!queue.isEmpty()) {
-            // size stored in var to prevent value fluctuation upon poll()
+        if(fresh==0) return 0;
+        while(!queue.isEmpty() && fresh>0) {
+            time++;
             int size = queue.size();
-            // for each rotting orange, check directions for fresh and decrement fresh count
             for(int i = 0; i<size; i++) {
-                int curr = queue.poll();
-                // expand squashed coords
-                int x = curr/n;
-                int y = curr%n;
+                int[] pos = queue.poll();
                 for(int[] dir : dirs) {
-                    int nextX = x + dir[0];
-                    int nextY = y + dir[1];
-                    if(hasFreshOrange(grid, nextX, nextY)) {
-                        queue.offer(nextX * n + nextY);
-                        // decrease fresh count and return time when no fresh remains
-                        if(fresh--==0) return time;
-                    }
+                    int x = pos[0]+dir[0];
+                    int y = pos[1]+dir[1];
+                    if(x<0||y<0||x>grid.length-1||y>grid[0].length-1||grid[x][y]!=1) continue;
+                    fresh--;
+                    grid[x][y] = 2;
+                    queue.offer(new int[] {x,y});
                 }
             }
-            // end of rot spread for the minute, increment time count
-            time++;
         }
-        // if fresh != 0, means unreachable fresh oranges exist, return -1
-        return fresh == 0 ? time : -1;
-    }
-
-    private boolean hasFreshOrange(int[][] grid, int i, int j) {
-        if(i<0||j<0||i>=grid.length||j>=grid[0].length||grid[i][j]!=1) return false;
-        grid[i][j] = 2;
-        return true;
+        return fresh==0 ? time : -1;
     }
 }
