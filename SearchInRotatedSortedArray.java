@@ -7,11 +7,12 @@
 // binary search for TC O(logn)
 // eg [4,5,6,7,0,1,2], target = 0
 
+// 2nd impl
 class Solution {
     public int search(int[] nums, int target) {
         int lo = 0, hi = nums.length-1;
         while (lo<=hi) {
-            int mid = (lo+hi)/2;
+            int mid = lo+(hi-lo)/2;
             if(target==nums[mid]) return mid;
 
             // nums[mid] is in the sorted part of nums (7)
