@@ -16,6 +16,8 @@ class Solution {
             if(target==nums[mid]) return mid;
 
             // nums[mid] is in the sorted part of nums (7)
+            // must rmb <=, no = means size 2 array eg. [3,1] with target 1 will go into else 
+            // and have hi set to mid-1 (-1), ending the while loop on mid=0 without checking index 1
             if(nums[lo]<=nums[mid]) { // 4<7, 0<1
                 // check lo and hi(mid) of 1st half against target
                 // target is in 2nd half of nums, disregard 1st half (0<4, must be in right half)
