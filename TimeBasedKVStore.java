@@ -4,7 +4,7 @@
  * alt soln use TreeMap
  * TC: O(log N) binary search on get
  */
-// 3rd impl
+// 4th impl, rmb to use arraylist for list implementation as we are performing both add and get
 
 class Data {
     String val;

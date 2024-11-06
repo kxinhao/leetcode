@@ -3,9 +3,10 @@
  * go through each account and map the email to the corresponding account list index number
  * go through each account again and find all accounts and hence emails tied to the same person
  * via dfs and tracking visited accounts
+ * alt method: union find
  * TC: O(N Log N) sorting O(Log N) * worst case operations on total emails N incl dupes O(N)
  */
-// 2nd impl
+// 3rd impl
 
 class Solution {
     public List<List<String>> accountsMerge(List<List<String>> accounts) {
@@ -39,8 +40,7 @@ class Solution {
         return ans;
     }
 
-    private void dfs(int curr, List<List<String>> accounts, 
-                    Map<String, List<Integer>> accountMap, 
+    private void dfs(int curr, List<List<String>> accounts, Map<String, List<Integer>> accountMap, 
                     boolean[] visited, Set<String> set) {
                         if(visited[curr]) return;
                         visited[curr] = true;

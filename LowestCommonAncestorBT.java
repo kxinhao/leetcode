@@ -3,7 +3,7 @@
  * Solution predicated on constraint that p and q nodes exist in tree
  * TC: O(N) where N is number of nodes in BT
  */
-// 2nd impl, post order traversal
+// 3rd impl, post order traversal
 
 /**
  * Definition for a binary tree node.
