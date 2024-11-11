@@ -1,5 +1,6 @@
 /**
  * LeetCode 721 Accounts Merge (Medium)
+ * ** use treeset for sort on insertion
  * go through each account and map the email to the corresponding account list index number
  * go through each account again and find all accounts and hence emails tied to the same person
  * via dfs and tracking visited accounts
