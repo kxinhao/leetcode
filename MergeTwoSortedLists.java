@@ -41,7 +41,7 @@ class Solution {
   }
   */
 
-    // Recursion method, makes more sense for interview
+    // Recursion method, makes more sense for interview, mention recursion takes additional space
     // 2nd impl
         // terminal conditions
         if(list1 == null) return list2;
