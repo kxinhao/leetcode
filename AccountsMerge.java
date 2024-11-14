@@ -11,7 +11,7 @@
  * Union Find TC: O(Log N)
  */
 
-// 2nd impl
+// 3rd impl
 // Union Find soln
 class Solution {
     class UnionFind {
@@ -58,7 +58,7 @@ class Solution {
         int size = accounts.size();
         UnionFind uf = new UnionFind(size);
         // map unique email address as key and index in accouts as value
-        HashMap<String, Integer> emailToId = new  HashMap<>();
+        HashMap<String, Integer> emailToId = new HashMap<>();
         for(int i = 0; i < size; i++) {
             List<String> details = accounts.get(i);
             for(int j = 1; j < details.size(); j++) {
@@ -83,9 +83,9 @@ class Solution {
         }
         // collect the emails from idToEmails, sort it and add account name at
         // index 0 to get the final list to add to final return List
-        List<List<String>> mergedDetails =  new ArrayList<>();
+        List<List<String>> mergedDetails = new ArrayList<>();
         for(Integer id : idToEmails.keySet()) {
-            List<String> emails =  idToEmails.get(id);
+            List<String> emails = idToEmails.get(id);
             Collections.sort(emails);
             emails.add(0, accounts.get(id).get(0));
             mergedDetails.add(emails);
