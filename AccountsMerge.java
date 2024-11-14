@@ -1,12 +1,12 @@
 /**
  * LeetCode 721 Accounts Merge (Medium)
  * ** use treeset for sort on insertion
- * via graph and dfs: (simple code)
+ * via graph and dfs with visited array: (simple code to understand)
  *  - go through each account and map the email to the corresponding account list index number
  *  - go through each account again and find all accounts and hence emails tied to the same person
  *  - dfs and track visited accounts
  * alt method: union find (emphasis on performance)
- * Graph + DFS TC: O(N Log N) sorting O(Log N) * worst case operations 
+ * Graph + DFS TC: O(N Log N)/O(NK Log NK) sorting O(Log N) * worst case operations 
  *                 on total emails N incl dupes O(N)
  * Union Find TC: O(Log N)
  */
@@ -21,7 +21,6 @@ class Solution {
         public UnionFind(int num) {
             parent = new int[num];
             weight = new int[num];
-            
             // initial assignment of parent and weight to each element
             for(int i =  0; i < num; i++) {
                 parent[i] = i;
@@ -29,6 +28,7 @@ class Solution {
             }
         }
         
+        // join sets based on weight, less joins to more then sum
         public void union(int a, int  b) {
             int rootA = root(a);
             int rootB = root(b);
@@ -44,7 +44,7 @@ class Solution {
                 weight[rootB] += weight[rootA];
             }
         }
-        
+        // find root and compress at the same time
         public int root(int a) {
             if (parent[a] == a) {
                 return a;
@@ -56,17 +56,14 @@ class Solution {
 
     public List<List<String>> accountsMerge(List<List<String>> accounts) {
         int size = accounts.size();
-
         UnionFind uf = new UnionFind(size);
-
-        // prepare a hash with unique email address as key and index in accouts as value
+        // map unique email address as key and index in accouts as value
         HashMap<String, Integer> emailToId = new  HashMap<>();
         for(int i = 0; i < size; i++) {
             List<String> details = accounts.get(i);
             for(int j = 1; j < details.size(); j++) {
                 String email = details.get(j);
 				// if we have already seen this email before, merge the account "i" with previous account
-				// else add it to hash
                 if (emailToId.containsKey(email)) {
                     uf.union(i, emailToId.get(email));
                 } else  {
@@ -74,8 +71,7 @@ class Solution {
                 }
             }
         }
-        
-        // prepare a hash with index in accounts as key and list of unique email
+        // map index in accounts as key and list of unique email
         // address for that account as value
         HashMap<Integer, List<String>> idToEmails = new HashMap<>();
         for(String key : emailToId.keySet()) {
@@ -85,7 +81,6 @@ class Solution {
             }
             idToEmails.get(root).add(key);
         }
-        
         // collect the emails from idToEmails, sort it and add account name at
         // index 0 to get the final list to add to final return List
         List<List<String>> mergedDetails =  new ArrayList<>();
