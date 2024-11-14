@@ -77,12 +77,12 @@ class Solution {
         // map index in accounts as key and list of unique email
         // address for that account as value
         HashMap<Integer, List<String>> idToEmails = new HashMap<>();
-        for(String key : emailToId.keySet()) {
-            int root = uf.root(emailToId.get(key));
+        for(String email : emailToId.keySet()) {
+            int root = uf.root(emailToId.get(email));
             if (!idToEmails.containsKey(root)) {
                 idToEmails.put(root, new ArrayList<String>());
             }
-            idToEmails.get(root).add(key);
+            idToEmails.get(root).add(email);
         }
         // collect the emails from idToEmails, sort it and add account name at
         // index 0 to get the final list to add to final return List
