@@ -31,7 +31,7 @@ class Solution {
             }
         }
         
-        // union by weight
+        // union by weight, without this tree may reach height of n in worst case
         public void union(int a, int  b) {
             int rootA = root(a);
             int rootB = root(b);
@@ -101,6 +101,7 @@ class Solution {
 // Graph + DFS soln
 class Solution {
     public List<List<String>> accountsMerge(List<List<String>> accounts) {
+        // list of accounts with email
         Map<String, List<Integer>> accountMap = new HashMap<String, List<Integer>>();
         List<List<String>> ans = new LinkedList<>();
         boolean[] visited = new boolean[accounts.size()];
