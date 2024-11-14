@@ -11,7 +11,7 @@
  * Union Find TC: O(Log N)
  */
 
-// 1st impl
+// 2nd impl
 // Union Find soln
 class Solution {
     class UnionFind {
