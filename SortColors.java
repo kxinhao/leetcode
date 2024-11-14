@@ -8,14 +8,14 @@
 class Solution {
     public void sortColors(int[] nums) {
         // target nums[0] to nums[lo-1] to be 0
-        // nums[lo] to nums[curr] is 1
+        // nums[lo] to nums[hi] is 1
         // nums[hi+1] to nums[nums.length-1] is 2
         int lo = 0, hi = nums.length-1, curr = 0;
 
+        // considering each element in curr index
         while(curr<=hi) {
             // arr[curr] = 0, then swap arr[lo] and arr[curr] and increment lo by 1 
             // because all the zeros are till index lo – 1 and move to the next element 
-            // so increment curr by 1.
             if(nums[curr]==0) {
                 nums[curr] = nums[lo];
                 nums[lo] = 0;
