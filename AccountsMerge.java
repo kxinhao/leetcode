@@ -8,12 +8,15 @@
  * alt method: union find (emphasis on performance)
  * Graph + DFS TC: O(N Log N)/O(NK Log NK) sorting O(Log N) * worst case operations 
  *                 on total emails N incl dupes O(N)
- * Union Find TC: O(Log N)
+ * Union Find TC: O(N Log N) due to Collections.sort 
+ *            SC: O(N)
  */
 
 // 3rd impl
 // Union Find soln
 class Solution {
+    // union by rank/weight + path compression gives O(α(n)), where α(n) is inverse Ackermann fn which
+    // grows extremely slowly that it does not exceed 4 for n<10^600, O(1) < O(α(n)) < O(n)
     class UnionFind {
         int[] parent;
         int[] weight;
@@ -28,7 +31,7 @@ class Solution {
             }
         }
         
-        // join sets based on weight, less joins to more then sum
+        // union by weight
         public void union(int a, int  b) {
             int rootA = root(a);
             int rootB = root(b);
