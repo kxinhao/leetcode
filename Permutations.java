@@ -8,7 +8,7 @@
  * SC: O(N)
  */
 // eg. nums = [1,2,3]
-// 5th impl
+// 6th impl
 
 class Solution {
     public List<List<Integer>> permute(int[] nums) {
@@ -28,8 +28,8 @@ class Solution {
                 curr.add(nums[i]);
                 visited[i] = true;
                 backtrack(nums, ans, curr, visited);
-                visited[i] = false
                 curr.removeLast();
+                visited[i] = false
             }
         }
     }

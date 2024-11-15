@@ -12,7 +12,7 @@
  *            SC: O(N)
  */
 
-// 3rd impl
+// 4th impl
 // Union Find soln
 class Solution {
     // union by rank/weight + path compression gives O(α(n)), where α(n) is inverse Ackermann fn which

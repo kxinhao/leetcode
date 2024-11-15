@@ -5,7 +5,7 @@
  */
 // first impl using 2 pass count digit occurences and reimplement on index
 // iteration TC: O(N) SC: O(1)
-// 6th impl using DNF TC: O(N), SC: O(1)
+// 7th impl using DNF TC: O(N), SC: O(1)
 
 class Solution {
     public void sortColors(int[] nums) {
