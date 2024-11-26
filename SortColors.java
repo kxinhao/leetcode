@@ -4,8 +4,8 @@
  * National Flag(DNF)
  */
 // first impl using 2 pass count digit occurences and reimplement on index
-// iteration TC: O(N) SC: O(1)
-// 8th impl using DNF TC: O(N), SC: O(1)
+// iteration TC: O(N) or O(2N) SC: O(1)
+// 9th impl using DNF TC: O(N), SC: O(1)
 
 class Solution {
     public void sortColors(int[] nums) {
@@ -14,7 +14,7 @@ class Solution {
         // nums[hi+1] to nums[nums.length-1] is 2
         int lo = 0, hi = nums.length - 1, curr = 0;
 
-        // considering each element in curr index
+        // curr<=hi as we may land on curr==hi 
         while (curr <= hi) {
             // arr[curr] = 0, then swap arr[lo] and arr[curr] and increment lo by 1
             // nums[0] to nums[lo-1] will be 0
