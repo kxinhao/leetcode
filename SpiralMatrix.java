@@ -1,7 +1,36 @@
 /**
  * LeetCode 54 Spiral Matrix (Medium)
+ * 2 choices, recursive or iterative. iterative more intuitive for interviews
  * TC: O(m*n) m = matrix.length, n = matrix[0].length
+ * SC: O(1)
  */
+
+// 2nd impl
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        List<Integer> ans = new ArrayList<>();
+        int top = 0, left = 0, bot = matrix.length-1, right = matrix[0].length-1;
+        boolean buildingPath = true;
+        while(buildingPath) {
+            for(int i = left; i<=right; i++) ans.add(matrix[top][i]);
+            top++;
+            if(top>bot) return ans;
+
+            for(int i = top; i<=bot; i++) ans.add(matrix[i][right]);
+            right--;
+            if(right<left) return ans;
+
+            for(int i = right; i>=left; i--) ans.add(matrix[bot][i]);
+            bot--;
+            if(bot<top) return ans;
+
+            for(int i = bot; i>=top; i--) ans.add(matrix[i][left]);
+            left++;
+            if(left>right) return ans;
+        }
+        return ans;
+    }
+}
 
 class Solution {
    
