@@ -8,21 +8,7 @@
  * where numsOnLeft = root - inStart
  *
  */
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
+
 // 4th impl
 // eg. preorder = [3,9,20,15,7]
 //     inorder = [9,3,15,20,7]
