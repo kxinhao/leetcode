@@ -3,15 +3,15 @@
  * TC: O(N), SC: O(1)
  */
 
-// 2nd impl
+// 3rd impl
 class Solution {
     public int myAtoi(String s) {
         int index = 0, total = 0, sign = 1;
         // end of string case for 0 length string
         if(s.length()==0) return 0;
-        // ignore whitespaces
+        // ignore whitespaces, check ind if out of scope
         while(index<s.length() && s.charAt(index)==' ') index++;
-        // return total if we reached end of string
+        // return total if we reached end of string ie ind>s.length
         if(index==s.length()) return total;
         // set signedness (ie. +ve or -ve)
         if(s.charAt(index)=='+'||s.charAt(index)=='-') {
@@ -30,6 +30,7 @@ class Solution {
             // int MAX_VALUE last digit 7 
             if(Integer.MAX_VALUE/10 < total || Integer.MAX_VALUE/10 == total &&
                Integer.MAX_VALUE%10 < digit)
+            // immediately return if over/underflow
                 return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
             // building the digit left to right by shifting current total left by 1 decimal
             total = total*10 + digit;
