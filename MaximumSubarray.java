@@ -1,7 +1,7 @@
 /**
  * LeetCode 53 Maximum Subarray (Medium)
  * single pass dp soln, dp array stores larges subarray sum to date
- * Kadane's algorithm
+ * Kadane's algorithm/divide and conquer optimized
  * TC: O(N), SC: O(N)
  */
 
@@ -36,6 +36,7 @@ class Solution {
         return largestSum;
     }
     */
+
     // Kadane's algorithm TC: O(N), SC: O(1)
     // 3rd impl
     public int maxSubArray(int[] nums) {
@@ -45,5 +46,50 @@ class Solution {
             max = Math.max(maxEndHere, max);
         }
         return max;
+    }
+
+    // Divide and Conquer (naive method)
+    // TC: O(NLogN), SC: O(LogN) (Recursive stack requirement)
+    public int maxSubArray(int[] nums) {
+        return dnc(nums, 0, nums.length-1);    
+    }
+
+    private int dnc(int[] nums, int l, int r) {
+        if(l>r) return Integer.MIN_VALUE;
+        int leftSum = 0, rightSum = 0;
+        int mid = l + (r-l)/2;
+        for(int i = mid-1, currSum = 0; i>=l; i--) {
+            currSum += nums[i];
+            leftSum = Math.max(leftSum, currSum);
+        }
+        for(int i = mid+1, currSum = 0; i<=r; i++) {
+            currSum += nums[i];
+            rightSum = Math.max(rightSum, currSum);
+        }
+        // T(N) = 2T(N/2) + O(N) -> master's theorem -> TC: O(NLogN)
+        return Math.max(Math.max(dnc(nums, l, mid-1), dnc(nums, mid+1, r)), leftSum+rightSum+nums[mid]);
+    }
+
+    // Divide and Conquer (optimized), O(NLogN) -> O(N)
+    // 1. each recursive call does constant time work
+    // 2. split the problem into half each recursion
+    // 3. total splits = log(n)
+    // 4. work at each recursion level is essentially constant
+    // 5. total work hence is proportionate to n, giving TC: O(n)
+    // 6. space req is O(n) from precomputational space of pre and suf arrays
+    public int maxSubArray(int[] nums) {
+       int[] pre = nums.clone();
+       int[] suf = nums.clone();
+       // pre[i] is max sum ending at i, O(N) 
+       for(int i = 1; i<nums.length; i++) pre[i] += Math.max(0, pre[i-1]);
+       // suf[i] is max sum starting i, O(N)
+       for(int i = nums.length-2; i>=0; i--) suf[i] += Math.max(0, suf[i+1]);
+       return dnc(nums, 0, nums.length-1, pre, suf);
+    }
+
+    private int dnc(int[] nums, int l, int r, int[] pre, int[] suf) {
+        if(l==r) return nums[l];
+        int mid = l + (r-l)/2;
+        return Math.max(Math.max(dnc(nums, l, mid, pre, suf), dnc(nums, mid+1, r, pre, suf)), pre[mid] + suf[mid+1]); 
     }
 }
