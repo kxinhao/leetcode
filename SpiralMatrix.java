@@ -32,6 +32,8 @@ class Solution {
     }
 }
 
+// with helper method and recursion
+// 2nd impl
 class Solution {
    
     public List<Integer> spiralOrder(int[][] matrix) {
