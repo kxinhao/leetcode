@@ -50,6 +50,7 @@ class Solution {
 
     // Divide and Conquer (naive method)
     // TC: O(NLogN), SC: O(LogN) (Recursive stack requirement)
+    // 2nd impl
     public int maxSubArray(int[] nums) {
         return dnc(nums, 0, nums.length-1);    
     }
@@ -77,6 +78,7 @@ class Solution {
     // 4. work at each recursion level is essentially constant
     // 5. total work hence is proportionate to n, giving TC: O(n)
     // 6. space req is O(n) from precomputational space of pre and suf arrays
+    // 2nd impl
     public int maxSubArray(int[] nums) {
        int[] pre = nums.clone();
        int[] suf = nums.clone();
