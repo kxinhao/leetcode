@@ -3,7 +3,7 @@
  * TC: O(N), SC: O(1)
  */
 
-// 4th impl
+// 5th impl
 class Solution {
     public int myAtoi(String s) {
         int index = 0, total = 0, sign = 1;
