@@ -12,7 +12,7 @@
  *            SC: O(N)
  */
 
-// 6th impl
+// 7th impl
 // Union Find soln
 class Solution {
     // union by rank/weight + path compression gives O(α(n)), where α(n) is inverse Ackermann fn which
@@ -33,8 +33,8 @@ class Solution {
         
         // union by weight, without this tree may reach height of n in worst case
         public void union(int a, int  b) {
-            int rootA = root(a);
-            int rootB = root(b);
+            int rootA = findRoot(a);
+            int rootB = findRoot(b);
             
             if (rootA == rootB) {
                 return;
@@ -48,11 +48,11 @@ class Solution {
             }
         }
         // find root and compress at the same time
-        public int root(int a) {
+        public int findRoot(int a) {
             if (parent[a] == a) {
                 return a;
             }
-            parent[a] = root(parent[a]);
+            parent[a] = findRoot(parent[a]);
             return parent[a];
         }
     }
@@ -78,7 +78,7 @@ class Solution {
         // address for that account as value
         HashMap<Integer, List<String>> idToEmails = new HashMap<>();
         for(String email : emailToId.keySet()) {
-            int root = uf.root(emailToId.get(email));
+            int root = uf.findRoot(emailToId.get(email));
             if (!idToEmails.containsKey(root)) {
                 idToEmails.put(root, new ArrayList<String>());
             }
@@ -89,7 +89,7 @@ class Solution {
         List<List<String>> mergedDetails = new ArrayList<>();
         for(Integer id : idToEmails.keySet()) {
             List<String> emails = idToEmails.get(id);
-            Collections.sort(emails);
+            Collections.sort(emails); // NLogN time complexity
             emails.add(0, accounts.get(id).get(0));
             mergedDetails.add(emails);
         }
