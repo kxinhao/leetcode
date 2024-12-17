@@ -1,8 +1,9 @@
-// ** IMPL COUNT: 8 (rmb detach on trimCache) 
+// ** IMPL COUNT: 9 (rmb detach on trimCache) 
 // 2 ways to impl, Node class with both key and value,
 // or reverseLookup map to retrieve key
 // Summary: get and put methods check for existing Node, length check on put method
 // implement detach, prepend and trimCache methods, maintain lookup map of nodes and track curr length
+// O(1) lookup time due to hashmap, O(capacity) space complexity for hashmap size;
 
 class LRUCache {
 
