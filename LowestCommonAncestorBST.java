@@ -1,17 +1,8 @@
 /**
  * LeetCode 235 Lowest Common Ancestor of a BST (Medium)
+ * TC: O(LogN), SC: O(N)
  */
-// 2nd impl with recursion
-// TC: O(LogN), SC: O(N)
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
+// 3rd impl with recursion
 
 class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {

@@ -4,22 +4,7 @@
  * level==path.size() ensures first element of the element visited in the right view order will be
  * added to the path
  */
-
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
+// 3rd impl
 class Solution {
     public List<Integer> rightSideView(TreeNode root) {
         return walk(root, new ArrayList<Integer>(), 0);
