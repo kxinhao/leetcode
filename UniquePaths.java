@@ -1,8 +1,10 @@
 /**
  * LeetCode 62 Unique Paths (Medium)
- * DP soln, TC: O(N^2)
+ * as robot can only move down or right, first col and row is able to be accessed from above
+ * and right respectively(single access method)
+ * DP soln, TC: O(N^2), sum up number of ways to access each cell O(M*N)
  */
-// 2nd impl
+// 3rd impl
 
 class Solution {
     public int uniquePaths(int m, int n) {

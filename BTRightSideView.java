@@ -4,7 +4,7 @@
  * level==path.size() ensures first element of the element visited in the right view order will be
  * added to the path
  */
-// 3rd impl
+// 4th impl
 class Solution {
     public List<Integer> rightSideView(TreeNode root) {
         return walk(root, new ArrayList<Integer>(), 0);
