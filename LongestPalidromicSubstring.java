@@ -4,6 +4,7 @@
  * alternatively, Manacher's Algo TC: O(N)
  * naive/brute force is O(N^3), O(N^2) for every substring formation and palindrome check is O(N)
  */
+// 3rd impl, rmb to left+1 for substring operation
 
 class Solution {
     public String longestPalindrome(String s) {
@@ -21,6 +22,8 @@ class Solution {
 
     private String extend(String s, int left, int right) {
         // enters while only if a palindrome is found from left and right chars
+        // does not guarantee chars at next pointers are identical, but positions right pointer
+        // to account for exclusion in substring operation. left pointer needs to be reverted 1 step
         while(left>=0 && right<s.length() && s.charAt(left) == s.charAt(right)) {
             left--;
             right++;
