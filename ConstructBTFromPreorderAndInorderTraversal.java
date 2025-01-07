@@ -1,41 +1,45 @@
 /**
  * LeetCode 105 Construct BT from Preorder and Inorder Traversal (Medium)
- * TC: O(N), SC: O(N) using recursion
- * root found from preorder first element can be used to derive num of left/right nodes in
- * inorder arr as the splitting index
- * ind of right child for curr node in the preorder arr can be derived from:
- *      preStart ind + numsOnLeft +1 
+ * preorder traversal: root, left, right
+ * inorder traversal: left, root, right
+ * TC: O(N), SC: O(N) using recursion. full traversal of inorder/preorder trees needed and space
+ * needed is directly proportional to length of the arrays
+ * preorder first element is always root, can be used to derive num of left/right nodes in inorder
+ * beginning of right subtree for curr node in the preorder can be derived using:
+ *   preStart + numsOnLeft + 1 (eg. 0+1+1=2)
  * where numsOnLeft = root - inStart
- *
+ * the binary tree is built  subtree by subtree using preorder array and preStart ind as reference
+ * for the subtree root
+ * and the left/right subtree construction is boxed in by preStart/preEnd and inStart/inEnd contexts
+ * exceeding the context window means the child node is null
  */
 
-// 4th impl
+// 5th impl
 // eg. preorder = [3,9,20,15,7]
 //     inorder = [9,3,15,20,7]
 class Solution {
-    // map to store index of each inorder array value
+
+    // for quick node index reference from value, can only be used due to constraint
+    // preorder and inorder arrays all contain unique values
     Map<Integer, Integer> inorderMap = new HashMap<>();
 
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         for(int i = 0; i< inorder.length; i++) inorderMap.put(inorder[i],i);
-        TreeNode root = build(preorder, 0, preorder.length-1, inorder, 0, inorder.length-1);
-        return root;
-   }
+        return build(preorder, 0, preorder.length-1, inorder, 0, inorder.length-1);
+    }
 
     private TreeNode build(int[] preorder, int preStart, int preEnd, int[] inorder, int inStart, int inEnd) {
         if(preStart > preEnd || inStart > inEnd) return null;
         // subtree root node formed from preorder array preStart index element
-        // starting from preorder[0]
         TreeNode root = new TreeNode(preorder[preStart]);
-        // subtree root index from inorder array
-        // left of rootInd will be left subtree, right will be right subtree
+        // retrieve subtree root index from inorderMap
+        // left of rootInd in inorder will be left subtree, right will be right subtree
         int rootInd = inorderMap.get(root.val);
-        // num of left nodes is derived from root index - subtree inorder start ind
+        // leftNodes count is used to contextualize where left subtree ends and right subtree begins
         int leftNodes = rootInd - inStart;
-        // build left and right nodes based off root
         // build left subtree, restricting range to only left subtree nodes
-        // for preorder, preStart+1 as start ind and preStart + num of left nodes as end ind
-        // for inorder, inStart as start ind and rootInd-1 as end ind
+        // for preorder, left subtree starts at preStart+1 and ends at preStart+leftNodes
+        // for inorder, left subtree starts at inStart and ends at rootInd-1
         // eg. root.left = build(preorder, 1, 1, inorder, 0, 0);
         root.left = build(preorder, preStart+1, preStart+leftNodes, inorder, inStart, rootInd-1);
         // build right subtree, restricting range to only right subtree nodes
