@@ -2,11 +2,10 @@
  * LeetCode 17 Letter Combinations of a Phone Number (Medium)
  * Backtracking TC: O(4^N * N) simplified O(4^N), SC: O(3^N)
  */
-// 1st impl
+// 3rd impl
 
 class Solution {
     // mapping of letters to keys
-    Map<Integer, String[]> keys = initKeys();
     private static Map<Integer, String[]> initKeys() {
         Map<Integer, String[]> keys = new HashMap<>();
         keys.put(2, new String[]{"a","b","c"});
@@ -24,11 +23,12 @@ class Solution {
     public List<String> letterCombinations(String digits) {
         List<String> ans = new ArrayList<>();
         if(digits == null || digits.length() == 0) return ans;
-        combinate(digits, ans, new StringBuilder(), 0);
+        Map<Integer, String[]> keys = initKeys();
+        combinate(keys, digits, ans, new StringBuilder(), 0);
         return ans;
     }
 
-    private void combinate(String digits, List<String> ans, StringBuilder sb, int ind) {
+    private void combinate(Map<Integer, String[]> keys, String digits, List<String> ans, StringBuilder sb, int ind) {
         if(ind == digits.length()) {
             ans.add(new String(sb));
             return;
