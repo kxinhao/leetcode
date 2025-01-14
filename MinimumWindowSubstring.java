@@ -11,7 +11,6 @@ class Solution {
     public String minWindow(String s, String t) {
         if(t.length()>s.length()) return "";
 
-        // cant rmb exact ascii, just lump upper and lower case with inbetween special chars together
         int[] tFreq = new int[58];
         for(char c: t.toCharArray()) {
             tFreq[c - 'A']++;
@@ -19,7 +18,6 @@ class Solution {
 
         int start = 0, end = 0, minStart = 0, minLength = Integer.MAX_VALUE, counter = t.length();
 
-        // loop while end pointer is not at eos
         while (end < s.length()) {
             char cEnd = s.charAt(end);
             // reduce target substring counter if end char is in it and freq is not at 0
@@ -28,19 +26,17 @@ class Solution {
             // reduce tFreq for end char, duplicates cause value to be in negatives
             // and hence help with counter value being able to sieve out unneeded duplicates in ss
             tFreq[cEnd - 'A']--;
-            // increment end pointer(move right)
+            // increment end pointer
             end++;
 
-            // valid ss found
+            // valid substring found
             while(counter==0) {
-                // if min possible length found so far is greater than length of formed ss 
+                // redefine min window
                 if(minLength > end - start) {
-                    // set min length to the length of current formed ss
                     minLength = end - start;
-                    // set min start point to the current start pointer
                     minStart = start;
                 }
-                // condition to move increment start pointer to narrow down valid ss size
+                // condition to move increment start pointer to narrow down valid substring size
                 char cStart = s.charAt(start);
                 // add back the freq of cStart char as we are moving away from it
                 tFreq[cStart - 'A']++;
