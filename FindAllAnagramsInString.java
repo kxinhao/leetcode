@@ -3,7 +3,8 @@
  * answer derived from 242 Valid Anagrams and added sliding window logic
  * TC: O(N), SC: O(1)
  */
-// 2nd impl, rmb preliminary case of impossible anagram string length
+// 3rd impl, rmb preliminary case of impossible anagram string length
+// eg. s = "cbaebabacd", p = "abc"
 
 class Solution {
 		public List<Integer> findAnagrams(String s, String p) {
@@ -37,7 +38,7 @@ class Solution {
                 // remove freq added for char at start index
 				freqS[s.charAt(i)-'a']--;
                 // if next increment by pLen doesnt exceed sLen,
-                // move the window(anagram) down 1 index
+                // add the next char's occurence into the freq array
 				if(i+pLen < sLen) freqS[s.charAt(i+pLen)-'a']++;
 			}
 			return ans;
