@@ -1,10 +1,10 @@
 /**
  * LeetCode 438 Find All Anagrams in a String (Medium)
  * answer derived from 242 Valid Anagrams and added sliding window logic
+ * window based off length of p and move char by char while updating freq arrays
  * TC: O(N), SC: O(1)
  */
 // 3rd impl, rmb preliminary case of impossible anagram string length
-// eg. s = "cbaebabacd", p = "abc"
 
 class Solution {
 		public List<Integer> findAnagrams(String s, String p) {
