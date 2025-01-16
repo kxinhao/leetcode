@@ -2,10 +2,11 @@
  * LeetCode 76 Minimum Window Substring (Hard)
  * TC: O(N), SC: O(1) constant due to predefined array size and string formation only at return time
  * Check substring that is valid using 2 pointer system, start and end pointers
- * Use counter of t length to check if we should increment start or end pointers
+ * counter of t.length checks if substring has been found and to increment start pointer if found
+ * to minimize substring length
  * Use minStart and minLength to keep track of the min valid substring for return as answer
  */
-// 6th impl
+// 7th impl
 
 class Solution {
     public String minWindow(String s, String t) {
@@ -26,17 +27,15 @@ class Solution {
             // reduce tFreq for end char, duplicates cause value to be in negatives
             // and hence help with counter value being able to sieve out unneeded duplicates in ss
             tFreq[cEnd - 'A']--;
-            // increment end pointer
             end++;
 
-            // valid substring found
+            // enter while valid substring is found in s
             while(counter==0) {
                 // redefine min window
                 if(minLength > end - start) {
                     minLength = end - start;
                     minStart = start;
                 }
-                // condition to move increment start pointer to narrow down valid substring size
                 char cStart = s.charAt(start);
                 // add back the freq of cStart char as we are moving away from it
                 tFreq[cStart - 'A']++;
