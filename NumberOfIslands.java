@@ -1,6 +1,8 @@
 /**
  * LeetCode 200 Number of Islands (Medium)
  * DFS soln derived from flood fill approach
+ * traverse 2d array until first land value is found, mark or move through rest of the island,
+ * then find the next island shore
  * TC: O(N*M) where M*N is cells in grid as each cell is visited once
  * SC: O(N*M) if visited matrix used else O(1) if mutating input
  */
@@ -65,7 +67,8 @@ class Solution {
             for(int[] dir : dirs) {
                 int x = curr[0] + dir[0];
                 int y = curr[1] + dir[1];
-                if(x<0 || y<0 || x>=grid.length || y>= grid[0].length || visited[x][y] || grid[x][y]=='0')
+                if(x<0 || y<0 || x>=grid.length || y>= grid[0].length || visited[x][y] ||
+                grid[x][y]=='0')
                     continue;
                 visited[x][y] = true;
                 queue.offer(new int[]{x,y});
