@@ -27,6 +27,8 @@ class Solution {
             // reduce tFreq for end char, duplicates cause value to be in negatives
             // and hence help with counter value being able to sieve out unneeded duplicates in ss
             tFreq[cEnd - 'A']--;
+            // increment end here for tracking of length rather than index and to account for
+            // substring end index exclusive
             end++;
 
             // enter while valid substring is found in s
