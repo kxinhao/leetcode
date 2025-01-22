@@ -1,10 +1,11 @@
 /**
  * LeetCode 297 Serialize and Deserialize Binary Tree (Hard)
- * Preorder traversal with class var representatives of SPLIT symbol and null node
+ * Preorder traversal with class var final representatives of SPLIT symbol and null node
  * StringBuilder for serialization to String and Queue to store nodes for deserialization
  * in preorder traversal
+ * TC: O(N), SC: O(N)
  */
-// 4th impl, rmb to add null or node value before split value
+// 5th impl, rmb to add null or node value before split value
 
 /**
  * Definition for a binary tree node.
