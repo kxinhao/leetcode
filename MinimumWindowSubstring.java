@@ -27,8 +27,8 @@ class Solution {
             // reduce tFreq for end char, duplicates cause value to be in negatives
             // and hence help with counter value being able to sieve out unneeded duplicates in ss
             tFreq[cEnd - 'A']--;
-            // increment end here for tracking of length rather than index and to account for
-            // substring end index exclusive
+            // increment end ind here so that loop ends only after counter and freq trackers have
+            // been incremented
             end++;
 
             // enter while valid substring is found in s
@@ -45,7 +45,8 @@ class Solution {
                 // added back freq of cStart will be back to 1, hence we can increment the counter and
                 // move the end pointer
                 if(tFreq[cStart - 'A'] > 0) counter++;
-                // increment start pointer(move right)
+                // increment of start after setting of minLength & minStart so that minStart will be used
+                // instead for substring start index inclusive 
                 start++;
             }
         }
