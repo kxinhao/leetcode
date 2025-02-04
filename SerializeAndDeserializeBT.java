@@ -5,7 +5,7 @@
  * in preorder traversal
  * TC: O(N), SC: O(N)
  */
-// 5th impl, rmb to add null or node value before split value
+// 6th impl, rmb to add null or node value before split value
 
 /**
  * Definition for a binary tree node.
