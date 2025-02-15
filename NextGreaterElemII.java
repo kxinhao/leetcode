@@ -1,9 +1,11 @@
 /*
  * Leetcode 503 Next Greater Element II (Medium)
  * Monotonic soln, trick to circular traversal is to loop twice
+ * return array must contain values, hence assign values to return array elements using stack ind
  * TC: O(N), SC: O(N)
  */
 
+// 2nd impl
 class Solution {
     public int[] nextGreaterElements(int[] nums) {
         if(nums.length==1) return new int[]{-1};
