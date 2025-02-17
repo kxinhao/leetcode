@@ -2,6 +2,7 @@
  * LeetCode 496 Next Greater Element 1 (Easy)
  * Use HashMap to store the next greater element rather than use arrays and indexes to cut
  * down runtime
+ * TC: O(N), SC: O(N)
  */
 
 class Solution {
