@@ -2,8 +2,10 @@
  * LeetCode 456 132 Pattern (Medium)
  * Monotonic stack soln with preprocessed firstLower array
  * TC: O(N), SC: O(N)
+ * eg. nums[3,1,4,2]
  */
 
+// 2nd impl
 class Solution {
     public boolean find132pattern(int[] nums) {
         if(nums.length<3) return false;
@@ -15,13 +17,13 @@ class Solution {
             else if(nums[i]<nums[firstLower[i-1]]) firstLower[i] = i;
             else firstLower[i] = firstLower[i-1];
 
-            while(!stack.isEmpty() && nums[stack.peek()]<=nums[i]) {
-                stack.pop();
-            }
+            while(!stack.isEmpty() && nums[stack.peek()]<=nums[i]) stack.pop();
 
-            if(!stack.isEmpty()) {
-                if(nums[firstLower[stack.peek()]] < nums[i]) return true;
-            }
+            // nums[i] = nums[firstLower[stack.peek()]], (aka lowest elem to left of j)
+            // nums[j] = nums[stack.peek()], (aka prev greater value before k)
+            // nums[k] = nums[curr]
+            if(!stack.isEmpty() && nums[firstLower[stack.peek()]] < nums[i]) return true;
+
             stack.push(i);
         }
         return false;
