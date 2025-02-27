@@ -2,6 +2,7 @@
  * LeetCode 42 Trapping Rain Water (Hard)
  * TC: O(N), SC: O(1)
  * single pass soln, 2 pointer l and r moving inward, calc vol at each point
+ * Monotonic stack soln (TC: O(N), SC: O(N))
  */
 // 4th impl, rmb to use right/left as ind for height array for comparison with
 // height val/maxLeft/maxRight
@@ -26,5 +27,28 @@ class Solution {
             }
         }
         return waterVol;
+    }
+}
+
+// Monotonic stack soln
+class Solution {
+    public int trap(int[] height) {
+        int totalVol = 0;
+        Stack<Integer> stack = new Stack<>();
+        for(int i = 0; i<height.length; i++) {
+            while(!stack.isEmpty() && height[stack.peek()]<=height[i]) {
+                int stacktop = stack.pop();
+                // only calc volme when elements remain in stack to represent left wall
+                if(!stack.isEmpty()) {
+                    // height of current block of water calculated using lower of l/r wall 
+                    // and subtracting height of the bottom (popped stacktop)
+                    int h = Math.min(height[stack.peek()], height[i]) - height[stacktop];
+                    int w = i - (stack.peek()+1);
+                    totalVol += h*w;
+                }
+            }
+            stack.push(i);
+        }
+        return totalVol;
     }
 }
