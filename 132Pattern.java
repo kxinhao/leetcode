@@ -5,7 +5,7 @@
  * eg. nums[3,1,4,2]
  */
 
-// 2nd impl
+// 3rd impl
 class Solution {
     public boolean find132pattern(int[] nums) {
         if(nums.length<3) return false;

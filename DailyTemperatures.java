@@ -1,6 +1,8 @@
 /*
  * LeetCode 739 Daily Temperatures (Medium)
  * TC: O(N), SC: O(N)
+ * pop from stack when encounter greater than, assign day diff using ind diff between
+ * stacktop and curr ind
  */
 
 class Solution {

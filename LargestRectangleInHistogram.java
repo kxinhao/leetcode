@@ -19,12 +19,14 @@ class Solution {
         int maxArea = 0;
         int[] nextSmaller = new int[heights.length];
         int[] prevSmaller = new int[heights.length];
-        Arrays.fill(nextSmaller, heights.length);
-        Arrays.fill(prevSmaller, -1);
+        Arrays.fill(nextSmaller, heights.length); // right sided wall 
+        Arrays.fill(prevSmaller, -1); // left sided wall
         Stack<Integer> stack = new Stack<Integer>();
         for(int i=0; i<heights.length; i++) {
+            // pop each element in stack larger than current element (excluding equals)
             while(!stack.isEmpty() && heights[stack.peek()]>heights[i]) {
                 int stackTop = stack.pop();
+                // nextSmaller will be strictly smaller than current element
                 nextSmaller[stackTop] = i;
             }
             if(!stack.isEmpty()) prevSmaller[i] = stack.peek();
@@ -32,8 +34,8 @@ class Solution {
         }
 
         for(int i = 0; i<heights.length; i++) {
-            int currHeight = heights[i];
-            int width = nextSmaller[i] - prevSmaller[i] -1;
+            int currHeight = heights[i]; // max height for current rectangle
+            int width = nextSmaller[i] - prevSmaller[i] -1; // -1 to subtract other side of bounds
             maxArea = Math.max(maxArea, currHeight*width);
         }
         return maxArea;
