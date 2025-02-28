@@ -31,18 +31,23 @@ class Solution {
 }
 
 // Monotonic stack soln
+// 2nd impl
 class Solution {
     public int trap(int[] height) {
         int totalVol = 0;
         Stack<Integer> stack = new Stack<>();
         for(int i = 0; i<height.length; i++) {
+            // monotonic strictly decreasing stack
+            // enter while right wall (height[i]) is <= top stack value,
+            // meaning a volume may be found if left wall exists
             while(!stack.isEmpty() && height[stack.peek()]<=height[i]) {
                 int stacktop = stack.pop();
                 // only calc volme when elements remain in stack to represent left wall
                 if(!stack.isEmpty()) {
-                    // height of current block of water calculated using lower of l/r wall 
+                    // height of current possible block of water calculated using lower of l/r wall 
                     // and subtracting height of the bottom (popped stacktop)
                     int h = Math.min(height[stack.peek()], height[i]) - height[stacktop];
+                    // +1 to calc volme bounded by walls
                     int w = i - (stack.peek()+1);
                     totalVol += h*w;
                 }
