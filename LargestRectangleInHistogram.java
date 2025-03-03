@@ -11,9 +11,10 @@
  *              + prev greater assings val outside while loop, while stackTop <= curr
  */
 
-// monotonic stack ans, single pass calc of nextSmaller and prevSmaller values
+// monotonic stack ans, single pass calc of > nextSmaller and >= prevSmaller values
 // TC: O(N) 57ms(79%), SC: O(N) 56.12MB(96%)
-// 2nd impl
+// rmb this is diff from trapping rainwater!!
+// 3rd impl
 class Solution {
     public int largestRectangleArea(int[] heights) {
         int maxArea = 0;
@@ -29,10 +30,12 @@ class Solution {
                 // nextSmaller will be strictly smaller than current element
                 nextSmaller[stackTop] = i;
             }
+            // prevSmaller will be next non-popped element which may include == element
             if(!stack.isEmpty()) prevSmaller[i] = stack.peek();
             stack.push(i);
         }
 
+        // calculate max area possible with each height
         for(int i = 0; i<heights.length; i++) {
             int currHeight = heights[i]; // max height for current rectangle
             int width = nextSmaller[i] - prevSmaller[i] -1; // -1 to subtract other side of bounds
