@@ -1,6 +1,6 @@
 /**
  * LeetCode 295 Find Median from Data Stream (Hard)
- * use 2 heap, min/max to store larger/smaller halves of data
+ * use 2 heaps(pq in java), min/max to store larger/smaller halves of data
  * if thread-safe requirement, use PriorityBlockingQueue instead of PriorityQueue for heap impl
  * addNum() TC: O(LogN) SC: O(N)
  * findMedian() TC: O(1) SC: O(N)
@@ -11,14 +11,26 @@
  * ### Special Note2: Thread-safety can be attained via Synchronization by init TreeMap using
  *                    SortedMap m = Collections.synchronizedSortedMap(new TreeMap());
  * ### Soln using TreeMap has addNum() TC: O(LogN) and findMedian() TC: O(1), SC: O(N)
+ *
+ * Followups:
+ * 1. If all integer numbers from the stream are between 0 and 100, how would you optimize it?
+
+      We can maintain an integer array of length 100 to store the count of each number along
+      with a total count. Then, we can iterate over the array to find the middle value to get
+      our median. Time and space complexity would be O(100) = O(1).
+
+   2. If 99% of all integer numbers from the stream are between 0 and 100, how would you optimize it?
+
+      In this case, we need an integer array of length 100 and a hashmap for these numbers that
+      are not in [0,100].
  */
 
 // 4th impl
 // 2x Heap soln (Best runtime 85 ms, additional addNum() conditions to shave 50ms off runtime)
 class MedianFinder {
 
-    private PriorityQueue<Integer> min; // stores larger half with min val on top
-    private PriorityQueue<Integer> max; // stores smaller half with max val on top
+    private PriorityQueue<Integer> min; // stores larger half with min val as head (eg. 4,5,6)
+    private PriorityQueue<Integer> max; // stores smaller half with max val as head (eg. 3,2,1)
 
     public MedianFinder() {
         min = new PriorityQueue<>(); // default behavior of PriorityQueue is minHeap
