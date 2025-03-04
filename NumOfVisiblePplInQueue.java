@@ -8,6 +8,28 @@
  * greater height person (+n)
  */
 
+// optimized monotonic stack soln
+class Solution {
+    public int[] canSeePersonsCount(int[] heights) {
+        if(heights.length<2) return new int[] {0};
+        int[] ans = new int[heights.length];
+        Arrays.fill(ans, 0);
+        Stack<Integer> stack = new Stack<>();
+        for(int i = 0; i<heights.length; i++) {
+            // both persons must be greater height than everyone in btwn
+            // i person is to the right of stacktop, heights[i]>=heights[stacktop]
+            while(!stack.isEmpty() && heights[stack.peek()]<=heights[i]) {
+                ans[stack.pop()]++;
+            }
+            // prev greater for each i, heights[stackpeek()]>heights[i]
+            if(!stack.isEmpty()) {
+                ans[stack.peek()]++;
+            }
+            stack.push(i);
+        }
+        return ans;
+    }
+}
 // initial soln, TC: O(N), SC: O(N)
 class Solution {
     public int[] canSeePersonsCount(int[] heights) {
