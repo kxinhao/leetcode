@@ -8,7 +8,7 @@
  * greater height person (+n)
  */
 
-// optimized monotonic stack soln
+// optimized monotonic stack soln with 1 less iteration and without storing next/prevGreater in arrs
 class Solution {
     public int[] canSeePersonsCount(int[] heights) {
         if(heights.length<2) return new int[] {0};
