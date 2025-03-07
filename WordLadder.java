@@ -5,11 +5,13 @@
  * to a single full depth BFS
  * TC: O(M^(N/2) + M^(N/2)) 
  * vs O(M^N) when doing single full length BFS
+ * HashSet is used here as membership check (contains()) is O(1), no duplicates, orders
+ * and positions do not matter
  * M=length of word, N=wordList.size()
  * simplified O(M^(N/2))
  * SC: O(N)
  * /
-// 3rd impl
+// 4th impl
 
 class Solution {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
