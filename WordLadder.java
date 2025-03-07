@@ -3,12 +3,13 @@
  * Double ended BFS (forward and reverse search, ends when both ends meet)
  * cost of exploring each layer increases exponentially, so 2 half depth BFS is superior
  * to a single full depth BFS
- * TC: O(M^(N/2) + M^(N/2)) vs O(M^N) when doing single full length BFS
+ * TC: O(M^(N/2) + M^(N/2)) 
+ * vs O(M^N) when doing single full length BFS
  * M=length of word, N=wordList.size()
  * simplified O(M^(N/2))
  * SC: O(N)
  * /
-// 2nd impl
+// 3rd impl
 
 class Solution {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
@@ -16,10 +17,10 @@ class Solution {
         // HashSet operations take O(1) due to hashing
         Set<String> dict = new HashSet<>(wordList), startSet = new HashSet<>(),
                     endSet = new HashSet<>();
-        // init sets with start word and end word, initial addition of start word counts as 1
-        // transformation so len starts at 1
         startSet.add(beginWord);
         endSet.add(endWord);
+        // init sets with start word and end word, initial addition of start word counts as 1
+        // transformation so len starts at 1
         int len = 1;
         
         // while values present in either start Set, 
@@ -64,6 +65,7 @@ class Solution {
             // increment len to account for current iteration of transformations
             len++;
         }
+        // rmb to return 0 if endWord can not be reached
         return 0;
     }
 }
