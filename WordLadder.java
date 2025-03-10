@@ -11,7 +11,7 @@
  * simplified O(M^(N/2))
  * SC: O(N)
  * /
-// 4th impl
+// 5th impl
 
 class Solution {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {

@@ -25,7 +25,7 @@
       are not in [0,100].
  */
 
-// 5th impl
+// 6th impl
 // 2x Heap soln (Best runtime 85 ms, additional addNum() conditions to shave 50ms off runtime)
 class MedianFinder {
 
