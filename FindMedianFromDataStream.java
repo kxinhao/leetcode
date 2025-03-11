@@ -8,8 +8,8 @@
  * ## Special Note: Interviewer may demand use of BST / Self-balancing BST (AVL/Red-Black),
  *                  added soln using Red-Black Tree Java Impl(TreeMap) and Doubly Linked-List
  *                  TreeMap operations TC: O(LogN)
- * ### Special Note2: Thread-safety can be attained via Synchronization by init TreeMap using
- *                    SortedMap m = Collections.synchronizedSortedMap(new TreeMap());
+ * ### Special Note2: Thread-safety can be attained via Synchronization by init lock object 
+ *                    enforcing synchronization on the object before block code execution
  * ### Soln using TreeMap has addNum() TC: O(LogN) and findMedian() TC: O(1), SC: O(N)
  *
  * Followups:
@@ -25,12 +25,13 @@
       are not in [0,100].
  */
 
-// 6th impl
+// 7th impl
 // 2x Heap soln (Best runtime 85 ms, additional addNum() conditions to shave 50ms off runtime)
 class MedianFinder {
 
     private PriorityQueue<Integer> min; // stores larger half with min val as head (eg. 4,5,6)
     private PriorityQueue<Integer> max; // stores smaller half with max val as head (eg. 3,2,1)
+    private final Object lock = new Object();
 
     public MedianFinder() {
         min = new PriorityQueue<>(); // default behavior of PriorityQueue is minHeap
@@ -38,25 +39,28 @@ class MedianFinder {
     }
     
     public void addNum(int num) {
-        // add to maxHeap(smaller half) if maxHeap is empty or num is smaller than largest element
-        if(max.isEmpty()||num<max.peek()) max.add(num);
-        // if maxHeap is not empty or num larger than maxHeap top elem, add to minHeap (larger half)
-        else min.add(num);
-        // balancing logic (keep heaps within +-1 of each other) (only called when heaps unbalanced)
-        // if maxHeap larger than minHeap by more than 1, move from maxHeap to minHeap
-        if(max.size()-min.size()>1) min.add(max.poll());
-        // if minHeap larger, move from minheap to maxHeap
-        else if(min.size()-max.size()>1) max.add(min.poll());
+        synchronized(lock) {
+            // add to maxHeap(smaller half) if maxHeap is empty or num is smaller than largest element
+            if(max.isEmpty()||num<max.peek()) max.add(num);
+            // if maxHeap is not empty or num larger than maxHeap top elem, add to minHeap (larger half)
+            else min.add(num);
+            // balancing logic (keep heaps within +-1 of each other) (only called when heaps unbalanced)
+            // if maxHeap larger than minHeap by more than 1, move from maxHeap to minHeap
+            if(max.size()-min.size()>1) min.add(max.poll());
+            // if minHeap larger, move from minheap to maxHeap
+            else if(min.size()-max.size()>1) max.add(min.poll());
+        }
     }
     
     public double findMedian() {
-        // for even sized input, take from min and max heap divided by 2
-        // division by double to prevent int overflow
-        if(min.size() == max.size()) return (max.peek()/2.0+min.peek()/2.0);
-        // return from minHeap if it is larger
-        else if(min.size()>max.size()) return min.peek();
-        // else return from maxHeap
-        else return max.peek();
+        synchronized(lock) {
+            // for even sized input, take from min and max heap divided by 2
+            if(min.size() == max.size()) return (max.peek()/2.0+min.peek()/2.0);
+            // return from minHeap if it is larger
+            else if(min.size()>max.size()) return min.peek();
+            // else return from maxHeap
+            else return max.peek();
+        }
     }
 }
 

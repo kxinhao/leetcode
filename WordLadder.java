@@ -11,7 +11,7 @@
  * simplified O(M^(N/2))
  * SC: O(N)
  * /
-// 5th impl
+// 6th impl
 
 class Solution {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
@@ -65,6 +65,7 @@ class Solution {
             // startSet is replaced with set of valid words found after current startSet is gone tru
             startSet = tmpSet;
             // increment len to account for current iteration of transformations
+            // aka similar to a layer of tree
             len++;
         }
         // rmb to return 0 if endWord can not be reached
