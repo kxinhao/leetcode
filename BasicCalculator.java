@@ -4,11 +4,12 @@
  * Soln with recursion TC: O(N), SC: O(N) (1ms) (most optimal)
  * eg. (1+(4+5+2)-3)+(6+8)
  * eg. -1+(4+5+2)-3+(6+8)
- * Soln via Iteration TC: O(N), SC: O(N) (9ms)(most intuitive and easy to understand, stack replaces recursion)
+ * Soln via Iteration TC: O(N), SC: O(N) (9ms)(most intuitive and easy to understand,
+ * stack replaces recursion)
  */
 
 // iteration soln
-// 2nd impl
+// 3rd impl
 class Solution {
     public int calculate(String s) {
         Stack<Integer> stack = new Stack<Integer>();
