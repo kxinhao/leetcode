@@ -7,7 +7,7 @@
  * SC: O(N)
  * TODO: make comments more concise
  */
-// 3rd impl
+// 4th impl
 
 class Solution {
     class Job {
@@ -32,6 +32,7 @@ class Solution {
             jobs[i] = new Job(startTime[i], endTime[i], profit[i]);
         }
         
+        // sort by end time to prevent overlapping calculations
         Arrays.sort(jobs, (a, b) -> Integer.compare(a.end, b.end));
         
         // Dynamic Programming to find best possible profit at last element of dp array
@@ -53,7 +54,7 @@ class Solution {
                 int mid = left + ((right - left) >> 1); // >>1 == /2
                 // not returning mid value when jobs[mid].end = start as we are trying to find
                 // latest non overlapping job
-                // if the binary searched job ends before this job starts, we can sum the best
+                // if the mid job ends before this job starts, we can sum the best
                 // profit tied to that job to this jobs profit. we store the ind for the best
                 // we store best profit in res and continue binary search to find any jobs
                 // which would end later but before this job starts
@@ -66,7 +67,7 @@ class Solution {
             }
             
             int take = jobs[i].profit;
-            // summation of profit with best possible profit of latest non overlapping jobs
+            // job that ends before this job starts exists, add it's total profit to curr job
             if (res != -1) take += dp[res];
             
             int nottake = dp[i - 1];

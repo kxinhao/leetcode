@@ -1,15 +1,16 @@
 /**
  * LeetCode 224 Basic Calculator (Hard)
  * Soln using conversion to RPN and evaluate the RPN (46ms) (makes use of RPN eval concept, not optimal)
- * Soln with recursion TC: O(N), SC: O(N) (1ms) (most optimal)
- * eg. (1+(4+5+2)-3)+(6+8)
- * eg. -1+(4+5+2)-3+(6+8)
+ * Soln with recursion TC: O(N), SC: O(N) (1ms) 
  * Soln via Iteration TC: O(N), SC: O(N) (9ms)(most intuitive and easy to understand,
+ * 2 key points:
+ *      1. '+' or '-' gives the sign for next number and these with ')' calc the result of prev op
+ *      2. use stack to store result and signage before each '(' and apply them to result after ')'
  * stack replaces recursion)
  */
 
 // iteration soln
-// 3rd impl
+// 5th impl
 class Solution {
     public int calculate(String s) {
         Stack<Integer> stack = new Stack<Integer>();
