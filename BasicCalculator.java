@@ -10,7 +10,7 @@
  */
 
 // iteration soln
-// 5th impl
+// 6th impl
 class Solution {
     public int calculate(String s) {
         Stack<Integer> stack = new Stack<Integer>();
