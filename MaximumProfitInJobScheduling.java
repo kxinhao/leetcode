@@ -1,20 +1,19 @@
 /**
  * LeetCode 1235 Maximum Profit in Job Scheduling (Hard)
  * Sort by endTime(O(NlogN) + Dynamic Programing + Binary Search (O(logN))
- * DP array stores best profit for each job under consideration after sorting by end time
- * Binary search discovers non overlapping job with previously considered jobs
+ * Idea is to sort by endtime, then binary search prev jobs to find possible prev jobs and
+ * get the best profit at each job timeslot
+ * 1. sort by endTime(O(NLogN)) to prevent jobs with earlier end times from being left out
+ * 2. binary search the jobs between first and prev job to get the latet possible job
+ * 3. store the largest possible profit at each job within dp[]
  * TC: O(N * logN)
  * SC: O(N)
- * TODO: make comments more concise
  */
 // 4th impl
 
 class Solution {
     class Job {
-        int start;
-        int end;
-        int profit;
-            
+        int start, end, profit;           
         public Job(int start, int end, int profit) {
             this.start = start;
             this.end = end;
@@ -39,25 +38,11 @@ class Solution {
         int[] dp = new int[len];
         dp[0] = jobs[0].profit;
         
-        // iteration through each job after jobs[0], decide to select the job or not
-        // if job[i] does not overlap with a prior job, only its own profit will be considered,
-        // else binary search will determine the last job that ends before this job starts and
-        // the stored profit of possible prior jobs in dp[] will be summed with this job profit
-        // The best profit possible will be compared between the selection of 
-        // this job(and prior non overlapping ones) vs the best profit possible when the prev job
-        // was under consideration
         for (int i = 1; i < len; i++) {
             int start = jobs[i].start, left = 0, right = i - 1, res = -1;
             
-            // Binary Search entire possible time period to find if no overlap with mid job
             while (left <= right) {
                 int mid = left + ((right - left) >> 1); // >>1 == /2
-                // not returning mid value when jobs[mid].end = start as we are trying to find
-                // latest non overlapping job
-                // if the mid job ends before this job starts, we can sum the best
-                // profit tied to that job to this jobs profit. we store the ind for the best
-                // we store best profit in res and continue binary search to find any jobs
-                // which would end later but before this job starts
                 if (jobs[mid].end <= start) {
                     res = mid;
                     left = mid + 1;
@@ -66,16 +51,12 @@ class Solution {
                 }
             }
             
-            int take = jobs[i].profit;
-            // job that ends before this job starts exists, add it's total profit to curr job
-            if (res != -1) take += dp[res];
-            
-            int nottake = dp[i - 1];
-            
-            dp[i] = Math.max(take, nottake);
+            int currProfit = jobs[i].profit;
+            // job that ends before this job starts exists, add the profit possible for it to curr job
+            if (res != -1) currProfit += dp[res];
+            int prevProfit = dp[i - 1];
+            dp[i] = Math.max(currProfit, prevProfit);
         }
-        
-        // return last element of dp array
         return dp[len - 1];
     }
 }
