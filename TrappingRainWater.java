@@ -31,7 +31,7 @@ class Solution {
 }
 
 // Monotonic stack soln
-// 2nd impl
+// 3rd impl
 class Solution {
     public int trap(int[] height) {
         int totalVol = 0;
@@ -47,7 +47,7 @@ class Solution {
                     // height of current possible block of water calculated using lower of l/r wall 
                     // and subtracting height of the bottom (popped stacktop)
                     int h = Math.min(height[stack.peek()], height[i]) - height[stacktop];
-                    // +1 to calc volme bounded by walls
+                    // +1 to calc volme bounded by walls, can be i-stack.peek()-1 as well
                     int w = i - (stack.peek()+1);
                     totalVol += h*w;
                 }
