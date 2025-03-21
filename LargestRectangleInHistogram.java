@@ -1,6 +1,6 @@
 /**
  * LeetCode 84 Largest Rectangle in Histogram (Hard)
- * Naive soln is O(N^2), loop through array for each element to find next or prev smaller block
+ * Naive soln is O(N^3), loop through array for each element to find next or prev smaller block
  * use monotonic stack to track for O(N) soln
  * **Note** increasing/decreasing monotonic stack refers to order of stack from bottom up
  *          - increasing monotonic stack is from small to large
@@ -13,7 +13,8 @@
 
 // monotonic stack ans, single pass calc of > nextSmaller and >= prevSmaller values
 // TC: O(N) 57ms(79%), SC: O(N) 56.12MB(96%)
-// rmb this is diff from trapping rainwater!!
+// rmb this is diff from trapping rainwater!! where i is right wall, here nextSmaller and prevSmaller
+// must be found first before i is considered as the max height of each block
 // 3rd impl
 class Solution {
     public int largestRectangleArea(int[] heights) {
@@ -24,11 +25,11 @@ class Solution {
         Arrays.fill(prevSmaller, -1); // left sided wall
         Stack<Integer> stack = new Stack<Integer>();
         for(int i=0; i<heights.length; i++) {
-            // pop each element in stack larger than current element (excluding equals)
+            // monotonic non-decreasing stack
+            // pop each element in stack > current element
             while(!stack.isEmpty() && heights[stack.peek()]>heights[i]) {
-                int stackTop = stack.pop();
                 // nextSmaller will be strictly smaller than current element
-                nextSmaller[stackTop] = i;
+                nextSmaller[stack.pop()] = i;
             }
             // prevSmaller will be next non-popped element which may include == element
             if(!stack.isEmpty()) prevSmaller[i] = stack.peek();
@@ -37,8 +38,9 @@ class Solution {
 
         // calculate max area possible with each height
         for(int i = 0; i<heights.length; i++) {
-            int currHeight = heights[i]; // max height for current rectangle
-            int width = nextSmaller[i] - prevSmaller[i] -1; // -1 to subtract other side of bounds
+            int currHeight = heights[i];
+            // width = leftWall - rightWall -1
+            int width = nextSmaller[i] - prevSmaller[i] -1;
             maxArea = Math.max(maxArea, currHeight*width);
         }
         return maxArea;
