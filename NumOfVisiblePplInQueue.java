@@ -9,6 +9,7 @@
  */
 
 // optimized monotonic stack soln with 1 less iteration and without storing next/prevGreater in arrs
+// 2nd impl
 class Solution {
     public int[] canSeePersonsCount(int[] heights) {
         if(heights.length<2) return new int[] {0};
@@ -18,6 +19,7 @@ class Solution {
         for(int i = 0; i<heights.length; i++) {
             // both persons must be greater height than everyone in btwn
             // i person is to the right of stacktop, heights[i]>=heights[stacktop]
+            // those behind can only see up to curr person
             while(!stack.isEmpty() && heights[stack.peek()]<=heights[i]) {
                 ans[stack.pop()]++;
             }

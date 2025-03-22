@@ -31,14 +31,14 @@ class Solution {
 }
 
 // Monotonic stack soln
-// 3rd impl
+// 4th impl
 class Solution {
     public int trap(int[] height) {
         int totalVol = 0;
         Stack<Integer> stack = new Stack<>();
         for(int i = 0; i<height.length; i++) {
             // monotonic strictly decreasing stack
-            // enter while right wall (height[i]) is <= top stack value,
+            // enter while right wall (height[i]) is >= top stack value,
             // meaning a volume may be found if left wall exists
             while(!stack.isEmpty() && height[stack.peek()]<=height[i]) {
                 int stacktop = stack.pop();
