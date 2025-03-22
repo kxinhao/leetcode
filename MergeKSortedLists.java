@@ -5,7 +5,7 @@
  * SC: O(K) K = size of lists
  * alternative: divide and conquer with same TC and SC
  */
-// 3rd impl
+// 4rd impl
 
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {

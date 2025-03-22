@@ -11,11 +11,11 @@
  *              + prev greater assings val outside while loop, while stackTop <= curr
  */
 
-// monotonic stack ans, single pass calc of > nextSmaller and >= prevSmaller values
+// monotonic non-decreasing stack ans, single pass calc of > nextSmaller and >= prevSmaller values
 // TC: O(N) 57ms(79%), SC: O(N) 56.12MB(96%)
 // rmb this is diff from trapping rainwater!! where i is right wall, here nextSmaller and prevSmaller
 // must be found first before i is considered as the max height of each block
-// 3rd impl
+// 4th impl
 class Solution {
     public int largestRectangleArea(int[] heights) {
         int maxArea = 0;

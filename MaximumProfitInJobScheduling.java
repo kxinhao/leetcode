@@ -9,7 +9,7 @@
  * TC: O(N * logN)
  * SC: O(N)
  */
-// 5th impl
+// 6th impl
 
 class Solution {
     class Job {
