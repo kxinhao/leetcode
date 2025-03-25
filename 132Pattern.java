@@ -1,11 +1,13 @@
 /*
  * LeetCode 456 132 Pattern (Medium)
- * Monotonic stack soln with preprocessed firstLower array
+ * Monotonic decreasing stack soln with preprocessed firstLower array
+ * i<j<k, nums[i]<nums[k]<nums[j] (eg. [1,6,5])
+ * nums[firstLower[stack.peek()]]<nums[i]<nums[stack.peek()]
  * TC: O(N), SC: O(N)
  * eg. nums[3,1,4,2]
  */
 
-// 3rd impl
+// 4th impl
 class Solution {
     public boolean find132pattern(int[] nums) {
         if(nums.length<3) return false;

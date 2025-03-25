@@ -30,7 +30,7 @@ class Solution {
     }
 }
 
-// Monotonic stack soln
+// Monotonic decreasing stack soln
 // 4th impl
 class Solution {
     public int trap(int[] height) {

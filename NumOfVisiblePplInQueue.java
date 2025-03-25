@@ -1,6 +1,6 @@
 /*
  * LeetCode 1944 Number of Visible People in a Queue (Hard)
- * Monotonic stack
+ * Monotonic decreasing stack
  * For each person in the queue, the next person with greater or equal height will be visible,
  * but will block view of anyone after due to constraint of everyone in between must be shorter
  * than both persons in consideration (+1)
@@ -17,7 +17,7 @@ class Solution {
         Arrays.fill(ans, 0);
         Stack<Integer> stack = new Stack<>();
         for(int i = 0; i<heights.length; i++) {
-            // both persons must be greater height than everyone in btwn
+            // both persons must be greater height than everyone in btwn (strictly decreasing stack)
             // i person is to the right of stacktop, heights[i]>=heights[stacktop]
             // those behind can only see up to curr person
             while(!stack.isEmpty() && heights[stack.peek()]<=heights[i]) {
