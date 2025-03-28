@@ -5,7 +5,7 @@
  * SC: O(1)
  */
 
-// 2nd impl
+// 3rd impl
 /**
  * Definition for a binary tree node.
  * public class TreeNode {

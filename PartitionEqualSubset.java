@@ -6,7 +6,7 @@
  * find sum, must be divisible by 2 for equal partition to 2 subsets
  * build dp array until summation to partSum is possible upon adding an unsummed nums[] val
  */
-// 7th impl using soln
+// 8th impl using soln
 
 class Solution {
     public boolean canPartition(int[] nums) {
