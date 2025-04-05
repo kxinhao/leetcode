@@ -5,7 +5,7 @@
  * SC: O(1)
  */
 
-// 5th impl
+// 6th impl
 class Solution {
     public TreeNode deleteNode(TreeNode root, int key) {
         if(root==null) return null;

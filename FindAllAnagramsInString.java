@@ -4,7 +4,7 @@
  * window based off length of p and move char by char while updating freq arrays
  * TC: O(N), SC: O(1)
  */
-// 8th impl, rmb preliminary case of impossible anagram string length
+// 7th impl, rmb preliminary case of impossible anagram string length
 
 class Solution {
 		public List<Integer> findAnagrams(String s, String p) {
